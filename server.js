@@ -31,7 +31,7 @@ app.use(express.json())
 app.use(express.static('public'))
 
 
-app.get('/flights', (req, res) => {
+app.get('/', (req, res) => {
     res.send("Hello World")
 })
 
