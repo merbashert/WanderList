@@ -42,5 +42,43 @@ app.controller("MyController", ["$http", function($http){
         }).then(function(){
             controller.loggedInUser = false;
         })
+    };
+
+    this.createFlight = function(){
+        $http({
+            method:'POST',
+            url: '/flights',
+            data: {
+                country: this.country,
+                currency: this.currency,
+                locale: this.locale,
+                originPlace: this.originPlace,
+                destinationPlace: this.destinationPlace,
+                outboundPartialDate: this.outboundPartialDate,
+                inboundPartialDate: this.inboundPartialDate
+            }
+        })
     }
+
+    this.getFlights = function(){
+        $http({
+            method: 'GET',
+            url: '/flights'
+        }).then(function(respose){
+            controller.flights = response.data;
+        })
+    }
+
+    this.getFlights();
+
+    $http({
+        method:'GET',
+        url:'/session'
+    }).then(function(response){
+        if(response.data.username){
+            controller.loggedInUser = response.data;
+        }
+    });
+
+
 }])
