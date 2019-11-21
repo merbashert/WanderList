@@ -58,6 +58,10 @@ app.controller("MyController", ["$http", function($http){
                 outboundPartialDate: this.outboundPartialDate,
                 inboundPartialDate: this.inboundPartialDate
             }
+        }).then(function(response){
+            controller.getFlights();
+        }, function(error){
+            console.log(error);
         })
     }
 
