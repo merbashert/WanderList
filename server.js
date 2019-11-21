@@ -22,7 +22,7 @@ mongoose.connect(MONGODB_URI , { useNewUrlParser: true, useUnifiedTopology: true
 
 // Error / success
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
-db.on('connected', () => console.log('mongo connected: ', PROJECT3_DB));
+db.on('connected', () => console.log('mongo connected: '));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
 ///////////////////////
@@ -31,10 +31,10 @@ app.use(express.json())
 app.use(express.static('public'))
 
 
-app.get('/', (req, res) => {
+app.get('/flights', (req, res) => {
     res.send("Hello World")
 })
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("App is listening on 3000");
 })
