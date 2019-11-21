@@ -52,14 +52,6 @@ app.get('/flights', (req, res) => {
     res.send("Hello World")
 })
 
-////////////////////////
-//Connect to MONGODB
-////////////////////////
-mongoose.connect('mongodb://localhost:27017/flightsapp', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }, () => {
-  console.log('The connection with mongod is established')
-})
-
-
 
 app.listen(PORT, () => {
     console.log("App is listening on 3000");
