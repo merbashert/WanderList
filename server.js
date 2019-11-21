@@ -35,6 +35,6 @@ app.get('/flights', (req, res) => {
     res.send("Hello World")
 })
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("App is listening on 3000");
 })
