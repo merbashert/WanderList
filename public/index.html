@@ -37,23 +37,23 @@
         <input type="text" ng-model = "ctrl.locale" placeholder="Locale"><br/>
         <input type="text" ng-model = "ctrl.originPlace" placeholder="Origin"><br/>
         <input type="text" ng-model = "ctrl.destinationPlace" placeholder="Destination"><br/>
-        <input type="text" ng-model = "ctrl.outboundPartialDate" placeholder="Departure Date"><br/>
-        <input type="text" ng-model = "ctrl.inboundPartialDate" placeholder="Return Date"><br/>
+        <input type="date" ng-model = "ctrl.outboundPartialDate" placeholder="Departure Date"><br/>
+        <input type="date" ng-model = "ctrl.inboundPartialDate" placeholder="Return Date"><br/>
         <input type="submit" value="Save Trip">
     </form>
 
-    <div ng-repeat = "flight in ctrl.flights">
-        Currency: {{flight.currency}}
-        Locale: {{flight.locale}}
-        Origin: {{flight.originPlace}}
-        Destination: {{flight.destinationPlace}}
-        Departure Date: {{flight.outboundPartialDate}}
-        Return Date: {{flight.inboundPartialDate}}
-        <button ng-click = "ctrl.deleteflight(flight)">Delete Trip</button>
+    <div ng-repeat = "trip in ctrl.trips">
+        Currency: {{trip.currency}}
+        Locale: {{trip.locale}}
+        Origin: {{trip.originPlace}}
+        Destination: {{trip.destinationPlace}}
+        Departure Date: {{trip.outboundPartialDate}}
+        Return Date: {{trip.inboundPartialDate}}
+        <button ng-click = "ctrl.deleteTrip(trip)">Delete Trip</button>
         <a ng-if = "$index !== ctrl.indexOfFormToShow" ng-click = "ctrl.indexOfFormToShow = $index;ctrl.updatedCountry = '';ctrl.updatedCurrency = '';ctrl.updatedLocale = '';ctrl.updatedOriginPlace = '';ctrl.updatedDestinationPlace = '';ctrl.updatedOutboundPartialDate = '';ctrl.updatedInboundPartialDate = ''">
         </a>
 
-        <form ng-if = "$index === ctrl.indexOfFormToShow" ng-submit = "ctrl.editflight(flight)">
+        <form ng-if = "$index === ctrl.indexOfFormToShow" ng-submit = "ctrl.editTrip(trip)">
             <input type="text" ng-model = "ctrl.updatedCountry" placeholder = "Updated Country"><br/>
             <input type="text" ng-model = "ctrl.updatedCurrency" placeholder = "Updated Currency"><br/>
             <input type="text" ng-model = "ctrl.updatedLocale" placeholder = "Updated Locale"><br/>
