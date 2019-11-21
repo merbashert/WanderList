@@ -65,7 +65,7 @@ app.controller("MyController", ["$http", function($http){
         $http({
             method: 'GET',
             url: '/flights'
-        }).then(function(respose){
+        }).then(function(response){
             controller.flights = response.data;
         })
     }
