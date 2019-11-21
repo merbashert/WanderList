@@ -19,10 +19,10 @@ const MONGODB_URI = process.env.MONGODB_URI
 
 mongoose.connect(MONGODB_URI , { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true
 });
-
+console.log("line22");
 // Error / success
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
-db.on('connected', () => console.log('mongo connected: ', PROJECT3_DB));
+db.on('connected', () => console.log('mongo connected: '));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
 ///////////////////////
@@ -31,7 +31,7 @@ app.use(express.json())
 app.use(express.static('public'))
 
 
-app.get('/', (req, res) => {
+app.get('/flights', (req, res) => {
     res.send("Hello World")
 })
 
