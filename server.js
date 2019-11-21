@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-const mongoose = require('mongoose')
-
+const mongoose = require('mongoose');
+const session = require('express-session');
 
 const db = mongoose.connection
 require('dotenv').config()
@@ -30,7 +30,22 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 ///////////////////////
 
 app.use(express.json())
-app.use(express.static('public'))
+app.use(express.static('public'));
+app.use(session({
+    secret:'feedmeseymour',
+    resave:false,
+    saveUninitialized:false
+}))
+
+////////////////////////
+//Reroute to controllers
+///////////////////////
+
+const usersController = require('./controllers/users.js');
+app.use('/users', usersController);
+
+const sessionController = require('./controllers/session.js');
+app.use('/session', sessionController);
 
 
 app.get('/flights', (req, res) => {
