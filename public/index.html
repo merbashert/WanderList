@@ -30,6 +30,9 @@
 <section ng-if = "ctrl.loggedInUser !== false">
     <h1>Create Your Dream Trip</h1>
     <form ng-submit = "ctrl.createFlight()">
+        
+        <button ng-click = "ctrl.logout()">Log Out</button>
+
         <input type="text" ng-model = "ctrl.country" placeholder="Country"><br/>
         <input type="text" ng-model = "ctrl.currency" placeholder="Currency"><br/>
         <input type="text" ng-model = "ctrl.locale" placeholder="Locale"><br/>
