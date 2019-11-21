@@ -29,14 +29,15 @@
 
 <section ng-if = "ctrl.loggedInUser !== false">
     <h1>Create Your Dream Trip</h1>
+    <button ng-click = "ctrl.logout()">Log Out</button>
     <form ng-submit = "ctrl.createTrip">
         <input type="text" ng-model = "ctrl.country" placeholder="Country"><br/>
         <input type="text" ng-model = "ctrl.currency" placeholder="Currency"><br/>
         <input type="text" ng-model = "ctrl.locale" placeholder="Locale"><br/>
         <input type="text" ng-model = "ctrl.originPlace" placeholder="Origin"><br/>
         <input type="text" ng-model = "ctrl.destinationPlace" placeholder="Destination"><br/>
-        <input type="text" ng-model = "ctrl.outboundPartialDate" placeholder="Departure Date"><br/>
-        <input type="text" ng-model = "ctrl.inboundPartialDate" placeholder="Return Date"><br/>
+        <input type="date" ng-model = "ctrl.outboundPartialDate" placeholder="Departure Date"><br/>
+        <input type="date" ng-model = "ctrl.inboundPartialDate" placeholder="Return Date"><br/>
         <input type="submit" value="Save Trip">
     </form>
 
@@ -57,8 +58,8 @@
             <input type="text" ng-model = "ctrl.updatedLocale" placeholder = "Updated Locale"><br/>
             <input type="text" ng-model = "ctrl.updatedOriginPlace" placeholder = "Updated Origin"><br/>
             <input type="text" ng-model = "ctrl.updatedDestinationPlace" placeholder = "Updated Destination"><br/>
-            <input type="text" ng-model = "ctrl.updatedOutboundPartialDate" placeholder = "Updated Departure"><br/>
-            <input type="text" ng-model = "ctrl.updatedInboundPartialDate" placeholder = "Updated Currency"><br/>
+            <input type="date" ng-model = "ctrl.updatedOutboundPartialDate" placeholder = "Updated Departure"><br/>
+            <input type="date" ng-model = "ctrl.updatedInboundPartialDate" placeholder = "Updated Currency"><br/>
             <input type="submit" value="Submit Edits">
             <button ng-click = "ctrl.indexOfFormToShow = null">Cancel</button>
         </form>
