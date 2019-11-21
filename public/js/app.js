@@ -2,6 +2,7 @@ const app = angular.module("flights", []);
 
 app.controller("MyController", ["$http", function($http){
     const controller = this;
+    this.indexOfEditFormToShow = null;
     this.loggedInUser = false;
 
     this.signup = function(){
@@ -79,6 +80,34 @@ app.controller("MyController", ["$http", function($http){
             controller.loggedInUser = response.data;
         }
     });
+
+    this.editFlights = function(flight){
+        $http({
+            method:'PUT',
+            url:'/flights/' + flight._id,
+            data: {
+                country: this.updatedCountry,
+                currency: this.updatedCurrency,
+                locale: this.updatedLocale,
+                originPlace: this.updatedOriginPlace,
+                destinationPlace: this.updatedDestinationPlace,
+                outboundPartialDate: this.updatedOutboundPartialDate,
+                inboundPartialDate: this.updatedInboundPartialDate
+            }
+        }).then(function(response){
+            controller.getFlights();
+            controller.indexOfEditFormToShow = null;
+        })
+    }
+
+    this.deleteFlight = function(flight){
+        $http({
+            method: 'DELETE',
+            url: '/flights/' + flight._id
+        }).then(function(response){
+            controller.getFlights();
+        })
+    }
 
 
 }])
