@@ -41,6 +41,9 @@ app.use(session({
 //Reroute to controllers
 ///////////////////////
 
+const flightsController = require('./controllers/flights.js')
+app.use('/flights', flightsController)
+
 const usersController = require('./controllers/users.js');
 app.use('/users', usersController);
 
@@ -48,9 +51,9 @@ const sessionController = require('./controllers/session.js');
 app.use('/session', sessionController);
 
 
-app.get('/flights', (req, res) => {
-    res.send("Hello World")
-})
+// app.get('/flights', (req, res) => {
+//     res.send("Hello World")
+// })
 
 
 app.listen(PORT, () => {
