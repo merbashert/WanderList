@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const flightSchema = new mongoose.Schema({
     country: {type:String, required:true},
-    currency: {type:Number, required:true},
+    currency: {type:String, required:true},
     locale: {type:String, required:true},
     originPlace: {type:String, required:true},
     destinationPlace:{type:String, required:true},
