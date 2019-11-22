@@ -8,6 +8,7 @@ const flightSchema = new mongoose.Schema({
     destinationPlace:{type:String, required:true},
     outboundPartialDate:{type:String, required:true},
     inboundPartialDate:{type:String, required:true},
+    userid: {type:String, required: false}
 });
 
 const Flights = mongoose.model("Flight", flightSchema);
