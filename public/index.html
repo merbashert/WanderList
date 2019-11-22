@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
     <script src="/js/app.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="/css/app.css">
+
     <title></title>
 </head>
 <body ng-controller = "MyController as ctrl">
@@ -27,57 +29,60 @@
         </form>
     </section>
 
-<section ng-if = "ctrl.loggedInUser !== false">
-    <h1>Create Your Dream Trip</h1>
-
-    <h4>Already Know your flight details? Add them into the tracker below</h4>
-    <form ng-submit = "ctrl.createFlight()">
-
+    <section ng-if = "ctrl.loggedInUser !== false">
+        <h1>Save Your Flight</h1>
         <button ng-click = "ctrl.logout()">Log Out</button>
-
-        <input type="text" ng-model = "ctrl.country" placeholder="Country"><br/>
-        <input type="text" ng-model = "ctrl.currency" placeholder="Currency"><br/>
-        <input type="text" ng-model = "ctrl.locale" placeholder="Locale"><br/>
-        <input type="text" ng-model = "ctrl.originPlace" placeholder="Origin"><br/>
-        <input type="text" ng-model = "ctrl.destinationPlace" placeholder="Destination"><br/>
-        <input type="date" ng-model = "ctrl.outboundPartialDate" placeholder="Departure Date"><br/>
-        <input type="date" ng-model = "ctrl.inboundPartialDate" placeholder="Return Date"><br/>
-        <input type="submit" value="Save Trip">
-    </form>
-
-    <div ng-repeat = "trip in ctrl.trips">
-        Currency: {{trip.currency}}
-        Locale: {{trip.locale}}
-        Origin: {{trip.originPlace}}
-        Destination: {{trip.destinationPlace}}
-        Departure Date: {{trip.outboundPartialDate}}
-        Return Date: {{trip.inboundPartialDate}}
-        <button ng-click = "ctrl.deleteTrip(trip)">Delete Trip</button>
-        <a ng-if = "$index !== ctrl.indexOfFormToShow" ng-click = "ctrl.indexOfFormToShow = $index;ctrl.updatedCountry = '';ctrl.updatedCurrency = '';ctrl.updatedLocale = '';ctrl.updatedOriginPlace = '';ctrl.updatedDestinationPlace = '';ctrl.updatedOutboundPartialDate = '';ctrl.updatedInboundPartialDate = ''">
-        </a>
-
-        <form ng-if = "$index === ctrl.indexOfFormToShow" ng-submit = "ctrl.editTrip(trip)">
-            <input type="text" ng-model = "ctrl.updatedCountry" placeholder = "Updated Country"><br/>
-            <input type="text" ng-model = "ctrl.updatedCurrency" placeholder = "Updated Currency"><br/>
-            <input type="text" ng-model = "ctrl.updatedLocale" placeholder = "Updated Locale"><br/>
-            <input type="text" ng-model = "ctrl.updatedOriginPlace" placeholder = "Updated Origin"><br/>
-            <input type="text" ng-model = "ctrl.updatedDestinationPlace" placeholder = "Updated Destination"><br/>
-            <input type="text" ng-model = "ctrl.updatedOutboundPartialDate" placeholder = "Updated Departure"><br/>
-            <input type="text" ng-model = "ctrl.updatedInboundPartialDate" placeholder = "Updated Currency"><br/>
-            <input type="submit" value="Submit Edits">
-            <button ng-click = "ctrl.indexOfFormToShow = null">Cancel</button>
+        <form ng-submit = "ctrl.createFlight()">
+            <input type="text" ng-model = "ctrl.country" placeholder="Country"><br/>
+            <input type="text" ng-model = "ctrl.currency" placeholder="Currency"><br/>
+            <input type="text" ng-model = "ctrl.locale" placeholder="Locale"><br/>
+            <input type="text" ng-model = "ctrl.originPlace" placeholder="Origin"><br/>
+            <input type="text" ng-model = "ctrl.destinationPlace" placeholder="Destination"><br/>
+            <input type="date" ng-model = "ctrl.outboundPartialDate" placeholder="Departure Date"><br/>
+            <input type="date" ng-model = "ctrl.inboundPartialDate" placeholder="Return Date"><br/>
+            <input type="submit" value="Save flight">
         </form>
+        <br/>
+        <label for="Search By">
+            <input type="text" placeholder = "Search My Flights" ng-model = 'searchBox'>
+        </label>
+        <div>
+    		<label for="price-up">Return Date</label>
+    		<input type="radio" name="order" value="inboundPartialDate" ng-model='order' id="returndate"/>
+    		<label for="price-down">Country</label>
+    		<input type="radio" name="order" value="country" ng-model='order'id="country"/>
+    		<label for="product-asc">Departure Date</label>
+    		<input type="radio" name="order" value="outboundPartialDate" ng-model='order' id="departuredate"/>
+    	</div>
+        <div class="flightList">
+            <div ng-repeat = "flight in ctrl.flights | orderBy: order | filter: searchBox">
+                <div class="flight">
+                    Country: {{flight.country}}<br/>
+                    Currency: {{flight.currency}}<br/>
+                    Locale: {{flight.locale}}<br/>
+                    Origin: {{flight.originPlace}}<br/>
+                    Destination: {{flight.destinationPlace}}<br/>
+                    Departure Date: {{flight.outboundPartialDate | date:'medium'}}<br/>
+                    Return Date: {{flight.inboundPartialDate | date: 'medium'}}<br/>
+                    <button ng-click = "ctrl.deleteFlight(flight)">Delete flight</button>
+                    <button ng-if = "$index !== ctrl.indexOfFormToShow" ng-click = "ctrl.indexOfFormToShow = $index;ctrl.updatedCountry = '';ctrl.updatedCurrency = '';ctrl.updatedLocale = '';ctrl.updatedOriginPlace = '';ctrl.updatedDestinationPlace = '';ctrl.updatedOutboundPartialDate = '';ctrl.updatedInboundPartialDate = ''">Edit Flight
+                    </button>
+
+                    <form ng-if = "$index === ctrl.indexOfFormToShow" ng-submit = "ctrl.editFlight(flight)">
+                        <input type="text" ng-model = "ctrl.updatedCountry" placeholder = "Updated Country"><br/>
+                        <input type="text" ng-model = "ctrl.updatedCurrency" placeholder = "Updated Currency"><br/>
+                        <input type="text" ng-model = "ctrl.updatedLocale" placeholder = "Updated Locale"><br/>
+                        <input type="text" ng-model = "ctrl.updatedOriginPlace" placeholder = "Updated Origin"><br/>
+                        <input type="text" ng-model = "ctrl.updatedDestinationPlace" placeholder = "Updated Destination"><br/>
+                        <input type="date" ng-model = "ctrl.updatedOutboundPartialDate" placeholder = "Updated Departure"><br/>
+                        <input type="date" ng-model = "ctrl.updatedInboundPartialDate" placeholder = "Updated Return"><br/>
+                        <input type="submit" value="Submit Edits">
+                        <button ng-click = "ctrl.indexOfFormToShow = null">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
 
     </section>
-    <h4> Don't know your flight details yet? Search new flights below and add the details into the tracker</h4>
-    <style>
-        #flightSearch {position: fixed; width: 100%; }
-    </style>
-    <!-- code to get flight to open on same page: data-target="_self" -->
-    <div id:"flightSearch" data-skyscanner-widget="FlightSearchWidget" data-locale="en-GB" data-target="_self"></div>
-    <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>
-    </div>
-
-
 </body>
 </html>
