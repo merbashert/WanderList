@@ -96,8 +96,8 @@ const origin = "Buffalo"
                 locale: this.updatedLocale,
                 originPlace: this.updatedOriginPlace,
                 destinationPlace: this.updatedDestinationPlace,
-                outboundPartialDate: this.updatedOutboundPartialDate.toString().substring(4,15),
-                inboundPartialDate: this.updatedInboundPartialDate.toString().substring(4,15)
+                outboundPartialDate: this.updatedOutboundPartialDate,
+                inboundPartialDate: this.updatedInboundPartialDate
             }
         }).then(function(response){
             controller.getFlights();

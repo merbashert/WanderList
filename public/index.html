@@ -63,7 +63,7 @@
                     Origin: {{flight.originPlace}}<br/>
                     Destination: {{flight.destinationPlace}}<br/>
                     Departure Date: {{flight.outboundPartialDate}}<br/>
-                    Return Date: {{flight.inboundPartialDate.substring(0,11)}}<br/>
+                    Return Date: {{flight.inboundPartialDate}}<br/>
                     <button ng-click = "ctrl.deleteFlight(flight)">Delete flight</button>
                     <button ng-if = "$index !== ctrl.indexOfFormToShow" ng-click = "ctrl.indexOfFormToShow = $index;ctrl.updatedCountry = '';ctrl.updatedCurrency = '';ctrl.updatedLocale = '';ctrl.updatedOriginPlace = '';ctrl.updatedDestinationPlace = '';ctrl.updatedOutboundPartialDate = '';ctrl.updatedInboundPartialDate = ''">Edit Flight
                     </button>
