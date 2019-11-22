@@ -7,6 +7,7 @@ app.controller("MyController", ["$http", function($http){
     // Show my flights on logged in index page by default
     this.includeLoggedInPath = './myflights.html'
 
+
     // This controls our includes when user is not logged in
     this.changeInclude = (path) => {
         this.includePath = './' + path + '.html'
@@ -41,12 +42,14 @@ app.controller("MyController", ["$http", function($http){
         }).then(function(response){
             if(response.data.username){
                 controller.loggedInUser = response.data;
+                console.log(controller.loggedInUser._id);
             } else {
                 controller.loginUsername = null;
                 controller.loginPassword = null;
             }
         })
     }
+
 
     this.logout = function(){
         $http({
@@ -68,10 +71,10 @@ app.controller("MyController", ["$http", function($http){
                 originPlace: this.originPlace,
                 destinationPlace: this.destinationPlace,
                 outboundPartialDate: this.outboundPartialDate,
-                inboundPartialDate: this.inboundPartialDate
+                inboundPartialDate: this.inboundPartialDate,
+                userid: this.loggedInUser._id
             }
         }).then(function(response){
-            console.log(response);
             controller.getFlights();
         }, function(error){
             console.log(error);
