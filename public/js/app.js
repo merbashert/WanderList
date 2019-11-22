@@ -2,7 +2,7 @@ const app = angular.module("flights", []);
 
 app.controller("MyController", ["$http", function($http){
     const controller = this;
-
+const origin = "Buffalo"
     this.loggedInUser = false;
 
     this.signup = function(){

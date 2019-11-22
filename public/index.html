@@ -42,13 +42,20 @@
             <input type="date" ng-model = "ctrl.inboundPartialDate" placeholder="Return Date"><br/>
             <input type="submit" value="Save flight">
         </form>
-<br/>
+        <br/>
         <label for="Search By">
             <input type="text" placeholder = "Search My Flights" ng-model = 'searchBox'>
         </label>
-
+        <div>
+    		<label for="price-up">Return Date</label>
+    		<input type="radio" name="order" value="inboundPartialDate" ng-model='order' id="returndate"/>
+    		<label for="price-down">Country</label>
+    		<input type="radio" name="order" value="country" ng-model='order'id="country"/>
+    		<label for="product-asc">Departure Date</label>
+    		<input type="radio" name="order" value="outboundPartialDate" ng-model='order' id="departuredate"/>
+    	</div>
         <div class="flightList">
-            <div ng-repeat = "flight in ctrl.flights | filter: searchBox">
+            <div ng-repeat = "flight in ctrl.flights | orderBy: order | filter: searchBox">
                 <div class="flight">
                     Country: {{flight.country}}<br/>
                     Currency: {{flight.currency}}<br/>
@@ -56,7 +63,7 @@
                     Origin: {{flight.originPlace}}<br/>
                     Destination: {{flight.destinationPlace}}<br/>
                     Departure Date: {{flight.outboundPartialDate}}<br/>
-                    Return Date: {{flight.inboundPartialDate}}<br/>
+                    Return Date: {{flight.inboundPartialDate.substring(0,11)}}<br/>
                     <button ng-click = "ctrl.deleteFlight(flight)">Delete flight</button>
                     <button ng-if = "$index !== ctrl.indexOfFormToShow" ng-click = "ctrl.indexOfFormToShow = $index;ctrl.updatedCountry = '';ctrl.updatedCurrency = '';ctrl.updatedLocale = '';ctrl.updatedOriginPlace = '';ctrl.updatedDestinationPlace = '';ctrl.updatedOutboundPartialDate = '';ctrl.updatedInboundPartialDate = ''">Edit Flight
                     </button>
@@ -78,6 +85,5 @@
 
 
     </section>
-
 </body>
 </html>
