@@ -1,0 +1,10 @@
+.flightList {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.flight {
+    width: 200px;
+    margin: 10px;
+}
