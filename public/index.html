@@ -29,6 +29,8 @@
 
 <section ng-if = "ctrl.loggedInUser !== false">
     <h1>Create Your Dream Trip</h1>
+
+    <h4>Already Know your flight details? Add them into the tracker below</h4>
     <form ng-submit = "ctrl.createFlight()">
 
         <button ng-click = "ctrl.logout()">Log Out</button>
@@ -65,8 +67,17 @@
             <input type="submit" value="Submit Edits">
             <button ng-click = "ctrl.indexOfFormToShow = null">Cancel</button>
         </form>
+
+    </section>
+    <h4> Don't know your flight details yet? Search new flights below and add the details into the tracker</h4>
+    <style>
+        #flightSearch {position: fixed; width: 100%; }
+    </style>
+    <!-- code to get flight to open on same page: data-target="_self" -->
+    <div id:"flightSearch" data-skyscanner-widget="FlightSearchWidget" data-locale="en-GB" data-target="_self"></div>
+    <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>
     </div>
-</section>
+
 
 </body>
 </html>
