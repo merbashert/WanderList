@@ -72,6 +72,6 @@ io.on('connection', function(socket){
 });
 
 
-app.listen(PORT, () => {
+http.listen(PORT, () => {
     console.log("App is listening on 3000");
 })
