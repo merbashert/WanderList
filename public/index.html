@@ -9,43 +9,46 @@
     <title></title>
 </head>
 <body ng-controller = "MyController as ctrl">
+    <h1>FlightApp</h1>
+        <nav>
+            <!-- Create user account -->
+            <h5 ng-click="ctrl.changeInclude('signup')" ng-if = "ctrl.loggedInUser === false">Sign Up</h5>
+            <!-- Log in users with existing accounts -->
+            <h5 ng-click="ctrl.changeInclude('login')" ng-if = "ctrl.loggedInUser === false">Log In</h5>
+            <!-- Link to community board if not logged in -->
+            <h5 ng-click="ctrl.changeInclude('communityIndex')" ng-if = "ctrl.loggedInUser === false">Community</h5>
+            <!-- Link to community board if logged in-->
+            <h5 ng-click="ctrl.changeLoggedInInclude('communityIndex')" ng-if="ctrl.loggedInUser !== false">Community</h5>
+            <!-- Link to show my trips view -->
+            <h5 ng-click="ctrl.changeLoggedInInclude('myflights')" ng-if = "ctrl.loggedInUser !== false">My Trips</h5>
+            <!-- Link to show create trip -->
+            <h5 ng-click="ctrl.changeLoggedInInclude('createflight')" ng-if = "ctrl.loggedInUser !== false">Create Trip</h5>
+            <!-- Link to logout user -->
+            <h5 ng-click = "ctrl.logout()" ng-if = "ctrl.loggedInUser !== false">Log Out</h5>
+        </nav>
 
-    <section ng-if = "ctrl.loggedInUser === false">
-        <h3>Sign Up:</h3>
-        <form ng-submit = ctrl.signup()>
-            <label for="signupUsername">Username:</label>
-            <input id="signupUsername" type="text" ng-model="ctrl.signupUsername">
-            <label for="signupPassword">Password:</label>
-            <input id="signupPassword" type="password" ng-model="ctrl.signupPassword">
-            <input type="submit" value="Sign Up">
-        </form>
-        <h3>Login:</h3>
-        <form ng-submit = "ctrl.login()">
-            <label for="loginUsername">Username:</label>
-            <input id="loginUsername" type="text" ng-model="ctrl.loginUsername">
-            <label for="loginPassword">Password:</label>
-            <input id="loginPassword" type="password" ng-model="ctrl.loginPassword">
-            <input type="submit" value="Log In">
-        </form>
-    </section>
 
-    <section ng-if = "ctrl.loggedInUser !== false">
-        <h1>Save Your Flight</h1>
-        <button ng-click = "ctrl.logout()">Log Out</button>
-        <form ng-submit = "ctrl.createFlight()">
-            <input type="text" ng-model = "ctrl.country" placeholder="Country"><br/>
-            <input type="text" ng-model = "ctrl.currency" placeholder="Currency"><br/>
-            <input type="text" ng-model = "ctrl.locale" placeholder="Locale"><br/>
-            <input type="text" ng-model = "ctrl.originPlace" placeholder="Origin"><br/>
-            <input type="text" ng-model = "ctrl.destinationPlace" placeholder="Destination"><br/>
-            <input type="date" ng-model = "ctrl.outboundPartialDate" placeholder="Departure Date"><br/>
-            <input type="date" ng-model = "ctrl.inboundPartialDate" placeholder="Return Date"><br/>
-            <input type="submit" value="Save flight">
-        </form>
-        <br/>
+        <!-- This displays only when user is not logged in     -->
+        <section ng-if = "ctrl.loggedInUser === false">
+
+            <!-- This is the div where we display our includes -->
+            <div ng-include="ctrl.includePath"></div>
+
+        </section>
+
+
+        <section ng-if = "ctrl.loggedInUser !== false">
+        <!-- Everything inside this section will only be displayed if user is logged in -->
+            <h2>Welcome {{ctrl.loggedInUser.username}}!</h2>
+
+            <!-- This is the div where we display our includes to be shown only when logged in -->
+            <div ng-include="ctrl.includeLoggedInPath"></div>
+
+        <!-- Search users saved flights -->
         <label for="Search By">
             <input type="text" placeholder = "Search My Flights" ng-model = 'searchBox'>
         </label>
+
         <div>
     		<label for="price-up">Return Date</label>
     		<input type="radio" name="order" value="inboundPartialDate" ng-model='order' id="returndate"/>
@@ -54,34 +57,7 @@
     		<label for="product-asc">Departure Date</label>
     		<input type="radio" name="order" value="outboundPartialDate" ng-model='order' id="departuredate"/>
     	</div>
-        <div class="flightList">
-            <div ng-repeat = "flight in ctrl.flights | orderBy: order | filter: searchBox">
-                <div class="flight">
-                    Country: {{flight.country}}<br/>
-                    Currency: {{flight.currency}}<br/>
-                    Locale: {{flight.locale}}<br/>
-                    Origin: {{flight.originPlace}}<br/>
-                    Destination: {{flight.destinationPlace}}<br/>
-                    Departure Date: {{flight.outboundPartialDate | date:'medium'}}<br/>
-                    Return Date: {{flight.inboundPartialDate | date: 'medium'}}<br/>
-                    <button ng-click = "ctrl.deleteFlight(flight)">Delete flight</button>
-                    <button ng-if = "$index !== ctrl.indexOfFormToShow" ng-click = "ctrl.indexOfFormToShow = $index;ctrl.updatedCountry = '';ctrl.updatedCurrency = '';ctrl.updatedLocale = '';ctrl.updatedOriginPlace = '';ctrl.updatedDestinationPlace = '';ctrl.updatedOutboundPartialDate = '';ctrl.updatedInboundPartialDate = ''">Edit Flight
-                    </button>
 
-                    <form ng-if = "$index === ctrl.indexOfFormToShow" ng-submit = "ctrl.editFlight(flight)">
-                        <input type="text" ng-model = "ctrl.updatedCountry" placeholder = "Updated Country"><br/>
-                        <input type="text" ng-model = "ctrl.updatedCurrency" placeholder = "Updated Currency"><br/>
-                        <input type="text" ng-model = "ctrl.updatedLocale" placeholder = "Updated Locale"><br/>
-                        <input type="text" ng-model = "ctrl.updatedOriginPlace" placeholder = "Updated Origin"><br/>
-                        <input type="text" ng-model = "ctrl.updatedDestinationPlace" placeholder = "Updated Destination"><br/>
-                        <input type="date" ng-model = "ctrl.updatedOutboundPartialDate" placeholder = "Updated Departure"><br/>
-                        <input type="date" ng-model = "ctrl.updatedInboundPartialDate" placeholder = "Updated Return"><br/>
-                        <input type="submit" value="Submit Edits">
-                        <button ng-click = "ctrl.indexOfFormToShow = null">Cancel</button>
-                    </form>
-                </div>
-            </div>
-        </div>
 
     </section>
 </body>
