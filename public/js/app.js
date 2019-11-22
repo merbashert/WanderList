@@ -2,8 +2,20 @@ const app = angular.module("flights", []);
 
 app.controller("MyController", ["$http", function($http){
     const controller = this;
-const origin = "Buffalo"
+    const origin = "Buffalo"
     this.loggedInUser = false;
+    // Show my flights on logged in index page by default
+    this.includeLoggedInPath = './myflights.html'
+
+    // This controls our includes when user is not logged in
+    this.changeInclude = (path) => {
+        this.includePath = './' + path + '.html'
+    }
+
+    //This controls our includes that are only displayed when user is logged in
+    this.changeLoggedInInclude = (path) => {
+        this.includeLoggedInPath = './' + path + '.html'
+    }
 
     this.signup = function(){
         $http({
@@ -55,8 +67,8 @@ const origin = "Buffalo"
                 locale: this.locale,
                 originPlace: this.originPlace,
                 destinationPlace: this.destinationPlace,
-                outboundPartialDate: this.outboundPartialDate.toString().substring(4,15),
-                inboundPartialDate: this.inboundPartialDate.toString().substring(4,15)
+                outboundPartialDate: this.outboundPartialDate,
+                inboundPartialDate: this.inboundPartialDate
             }
         }).then(function(response){
             console.log(response);
