@@ -86,6 +86,7 @@ app.controller("MyController", ["$http", function($http){
             method: 'GET',
             url: '/flights'
         }).then(function(response){
+            console.log(this.loggedInUser);
             controller.flights = response.data;
         })
     }
