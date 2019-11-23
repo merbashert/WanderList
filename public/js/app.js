@@ -2,7 +2,7 @@ const app = angular.module("flights", []);
 
 app.controller("MyController", ["$http", function($http){
     const controller = this;
-    const origin = "Buffalo"
+
     this.loggedInUser = false;
     // Show my flights on logged in index page by default
     this.includeLoggedInPath = './myflights.html'

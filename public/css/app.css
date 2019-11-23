@@ -16,3 +16,7 @@ nav {
     justify-content: space-around;
     background-color: lightgrey;
 }
+
+nav h5 {
+    cursor:pointer;
+}
