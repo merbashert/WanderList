@@ -1,5 +1,5 @@
 <div class="flightList">
-    <div ng-repeat = "flight in ctrl.flights | orderBy: order | filter: searchBox">
+    <div ng-repeat = "flight in ctrl.flights | orderBy: order | filter: searchBox" ng-if = "flight.userid === ctrl.loggedInUser._id">
         <div class="flight">
             Country: {{flight.country}}<br/>
             Currency: {{flight.currency}}<br/>
