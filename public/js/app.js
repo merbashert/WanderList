@@ -28,6 +28,8 @@ app.controller("MyController", ["$http", function($http){
             }
         }).then(function(response){
             controller.loggedInUser = response.data;
+            // redirect to index page on submit
+            window.location.href = "/";
         })
     }
 
@@ -42,7 +44,8 @@ app.controller("MyController", ["$http", function($http){
         }).then(function(response){
             if(response.data.username){
                 controller.loggedInUser = response.data;
-                console.log(controller.loggedInUser._id);
+                // redirect to index page on submit
+                window.location.href = "/";
             } else {
                 controller.loginUsername = null;
                 controller.loginPassword = null;
@@ -213,8 +216,8 @@ app.controller("SearchFlightsController", ["$http", function($http){
         },
 
     }).then(function(response){
-        console.log(response);
-        controller.searchFlights = response.data
+        console.log(response.data);
+        controller.foundFlights = response.data
     });
 }
 
