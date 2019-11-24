@@ -75,7 +75,7 @@ app.controller("MyController", ["$http", function($http){
                 userid: this.loggedInUser._id
             }
         }).then(function(response){
-            controller.getFlights();
+            redirect('/');
         }, function(error){
             console.log(error);
         })
