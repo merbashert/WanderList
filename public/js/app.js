@@ -75,7 +75,8 @@ app.controller("MyController", ["$http", function($http){
                 userid: this.loggedInUser._id
             }
         }).then(function(response){
-            redirect('/');
+            // redirect to show flights page on submit
+            window.location.href = "/";
         }, function(error){
             console.log(error);
         })
