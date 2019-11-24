@@ -25,27 +25,7 @@
 
   <body>
 
-    <div class="container">
-          <h2>Community Posts</h2>
-          <!-- Trigger the modal with a button -->
-          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Post</button>
 
-          <!-- Modal -->
-          <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 id="modalHeader" class="modal-title">Community Posts</h4>
-                </div>
-                <div class="modal-body">
-                  <p id="modalHeader">New comments below</p>
-                  <ul id="messages"></ul>
-                  <form action="">
-                    <input id="m" autocomplete="off" /><button type="button" class="btn btn-default">Send</button>
-                  </form>
                   <script src="/socket.io/socket.io.js"></script>
                   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
                   <script>
@@ -62,16 +42,7 @@
                       });
                     });
                   </script>
-                </div>
-                <div class="modal-footer">
-                  <!-- <button id="close" type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
+                
 
   </body>
 </html>

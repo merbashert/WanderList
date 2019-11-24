@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app = "searchFlights">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+        <script src="/js/searchFlightsApp.js" charset="utf-8"></script>
+        <title></title>
+    </head>
+    <body ng-controller = "SearchFlightsController as ctrl">
+
+        <h1>Search Flights</h1>
+
+        <form ng-submit = "ctrl.searchFlights()">
+            Outbound Airport<select ng-model="ctrl.userOutboundAir">
+                <option value="LAX-sky">LAX-Los Angeles, CA</option>
+                <option value="SFO-sky">SFO-San Francisco, CA</option>
+                <option value="BRO-sky">BRO-Brownsville, Tx</option>
+                <option value="BRO-sky">BRO-Brownsville, Tx</option>
+                <option value="RBH-sky">RBH-Brooks Lodge, AK</option>
+                <option value="BUF-sky">BUF-Buffalo, NY</option>
+                <option value="CLE-sky">CLE-Cleveland, OH</option>
+                <option value="COD-sky">COD-Cody/Yellowstone, WY</option>
+
+            </select> <br/>
+            Inbound Airport<select ng-model="ctrl.userInboudAir">
+                <option value="LAX-sky">LAX-Los Angeles, CA</option>
+                <option value="SFO-sky">SFO-San Francisco, CA</option>
+                <option value="BRO-sky">BRO-Brownsville, Tx</option>
+                <option value="BRO-sky">BRO-Brownsville, Tx</option>
+                <option value="RBH-sky">RBH-Brooks Lodge, AK</option>
+                <option value="BUF-sky">BUF-Buffalo, NY</option>
+            </select> <br/>
+            Outbound Date: <input type="text" ng-model = "ctrl.userOutboundDate" placeholder="2019-12-01"><br/>
+            Inbound Date: <input type="text" ng-model = "ctrl.userInboundDate" placeholder="2019-12-10"><br/>
+            <input type="submit" value="search flights">
+        </form><br/>
+
+        <h1>Convert Currency</h1>
+        <form ng-submit = "ctrl.currency()">
+            To <select ng-model="ctrl.toCountry">
+                <option value="AUD">AUD-Australian Dollar</option>
+                <option value="CAD">CAD-Canadian dollar</option>
+                <option value="CHF">CHF-Swiss franc</option>
+                <option value="CNY">CNY-Chinese Yuan</option>
+                <option value="EUR">EUR-Euro</option>
+                <option value="GBP">GBP-British pound</option>
+                <option value="JPY">JPY-Japanese Yen</option>
+                <option value="MXN">MXN-Mexican peso</option>
+                <option value="NZD">NZD-New Zealand Dollar</option>
+                <option value="USD">USD-U.S dollar</option>
+            </select> <br/>
+
+
+            From <select ng-model="ctrl.fromCountry">
+                <option value="AUD">AUD-Australian Dollar</option>
+                <option value="CAD">CAD-Canadian dollar</option>
+                <option value="CHF">CHF-Swiss franc</option>
+                <option value="CNY">CNY-Chinese Yuan</option>
+                <option value="EUR">EUR-Euro</option>
+                <option value="GBP">GBP-British pound</option>
+                <option value="JPY">JPY-Japanese Yen</option>
+                <option value="MXN">MXN-Mexican peso</option>
+                <option value="NZD">NZD-New Zealand Dollar</option>
+                <option value="USD">USD-U.S dollar</option>
+
+             </select> <br/>
+            <input type="submit" value="convert currency">
+        </form>
+
+            <div ng-repeat = "searchFlight in ctrl.searchFlights">
+                <a href = "/searchFlights/{{searchFlight._id}}">
+                {{searchFlights.toCountry}}<br/></a>
+                {{searchFlights.fromCountry}<br/>
+            </div>
+    </body>
+</html>
