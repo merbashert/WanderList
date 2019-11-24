@@ -20,7 +20,6 @@
                 {{post.return}}<br/>
                 {{post.cost}}<br/>
                 {{post.description}}<br/>
-                <!-- {{post.comments}}<br/> -->
                 <div ng-repeat = "x in post.comments">
                     {{x}}
                 </div>
@@ -30,25 +29,7 @@
                     <input type="submit" value="Add Comment">
                 </form>
 
-                <!-- <div class="commentBox">
-                    <form ng-controller = "commentController">
-                        <input type="text" ng-model = "commentText">
-                        <button ng-click="addComment()">Add Comment</button>
-                    </form>
-
-                </div> -->
-
 
             </div>
-            <!-- <div ng-include = "'comment.html'"> -->
 
-
-            <!-- <script>
-            $('#addComment').on('click', (event) => {
-                event.preventDefault();
-                const comment = $('#comment').val();
-                console.log(comment);
-                const newComment = $('<div>').appendTo($('.commentBox'))
-            })
-            </script> -->
     </section>

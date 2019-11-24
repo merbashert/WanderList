@@ -1,4 +1,4 @@
-const app = angular.module("searchFlights", []);
+// const app = angular.module("searchFlights", []);
 
 
 // app.controller("SearchFlightsController", ["$http", function($http){
