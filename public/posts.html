@@ -1,39 +1,17 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr" ng-app = "posts">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
-        <script src="/js/posts.js" charset="utf-8"></script>
-        <title></title>
-    </head>
-    <body ng-controller = "PostController as ctrl">
 
-        <h1>New Memory</h1>
+<section ng-controller = "PostController as ctrl">
+    <h1>Community Memory Board</h1>
 
-        <form ng-submit = "ctrl.createPost()">
-            <input type="text" ng-model = "ctrl.destination" placeholder="Destination"><br/>
-            <input type="text" ng-model = "ctrl.departure" placeholder="Departure"><br/>
-            <input type="text" ng-model = "ctrl.return" placeholder="Return"><br/>
-            <input type="number" ng-model = "ctrl.cost" placeholder="Cost"><br/>
-            <input type="text" ng-model = "ctrl.description" placeholder="Description">
-            <input type="hidden" ng-model = "ctrl.username" placeholder="Username"><br/>
-            <input type="submit" value="Save Memory">
-        </form>
+        <div ng-repeat = "post in ctrl.posts">
 
-            <div ng-repeat = "post in ctrl.posts">
-                <a href = "/posts/{{post._id}}">
-                {{post.destination}}<br/></a>
-                {{post.departure}}<br/>
-                {{post.return}}<br/>
-                {{post.cost}}<br/>
-                {{post.description}}<br/>
-                <button ng-click = "ctrl.deletePost(post)">Delete post</button>
-                <div ng-include="'comment.html'">
-
-                </div>
-
-                </div>
+            {{post.destination}}<br/>
+            {{post.departure}}<br/>
+            {{post.return}}<br/>
+            {{post.cost}}<br/>
+            {{post.description}}<br/>
+            <!-- {{post.comments}}<br/> -->
+            <div ng-repeat = "x in post.comments">
+                {{x}}
             </div>
-    </body>
-</html>
+            </div>
+</body>

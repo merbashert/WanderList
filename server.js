@@ -61,6 +61,7 @@ app.use("/searchFlights", searchFlightsController)
 //     res.send("Hello World")
 // })
 
+
 app.get('/community', function(req, res){
   res.sendFile(__dirname + "/public/communityIndex.html");
 });

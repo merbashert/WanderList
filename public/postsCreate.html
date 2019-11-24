@@ -1,0 +1,54 @@
+
+    <section ng-controller = "PostController as ctrl">
+
+        <h1>New Memory</h1>
+
+        <form ng-submit = "ctrl.createPost()">
+            <input type="text" ng-model = "ctrl.destination" placeholder="Destination"><br/>
+            <input type="text" ng-model = "ctrl.departure" placeholder="Departure"><br/>
+            <input type="text" ng-model = "ctrl.return" placeholder="Return"><br/>
+            <input type="number" ng-model = "ctrl.cost" placeholder="Cost"><br/>
+            <input type="text" ng-model = "ctrl.description" placeholder="Description">
+            <input type="hidden" ng-model = "ctrl.username" placeholder="Username"><br/>
+            <input type="submit" value="Save Memory">
+        </form>
+
+            <div ng-repeat = "post in ctrl.posts">
+
+                {{post.destination}}<br/>
+                {{post.departure}}<br/>
+                {{post.return}}<br/>
+                {{post.cost}}<br/>
+                {{post.description}}<br/>
+                <!-- {{post.comments}}<br/> -->
+                <div ng-repeat = "x in post.comments">
+                    {{x}}
+                </div>
+                <button ng-click = "ctrl.deletePost(post)">Delete post</button>
+                <form ng-submit = "ctrl.addComment(post)">
+                    <input type="text" ng-model = "ctrl.comment">
+                    <input type="submit" value="Add Comment">
+                </form>
+
+                <!-- <div class="commentBox">
+                    <form ng-controller = "commentController">
+                        <input type="text" ng-model = "commentText">
+                        <button ng-click="addComment()">Add Comment</button>
+                    </form>
+
+                </div> -->
+
+
+            </div>
+            <!-- <div ng-include = "'comment.html'"> -->
+
+            </div>
+            <!-- <script>
+            $('#addComment').on('click', (event) => {
+                event.preventDefault();
+                const comment = $('#comment').val();
+                console.log(comment);
+                const newComment = $('<div>').appendTo($('.commentBox'))
+            })
+            </script> -->
+    </section>
