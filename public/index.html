@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr" ng-app = "flights">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -13,23 +14,43 @@
     <title></title>
 </head>
 <body ng-controller = "MyController as ctrl">
-    <h1>FlightApp</h1>
-    <nav>
-        <!-- Create user account -->
-        <h5 ng-click="ctrl.changeInclude('signup')" ng-if = "ctrl.loggedInUser === false">Sign Up</h5>
-        <!-- Log in users with existing accounts -->
-        <h5 ng-click="ctrl.changeInclude('login')" ng-if = "ctrl.loggedInUser === false">Log In</h5>
-        <!-- Link to community board if not logged in -->
-        <h5 ng-click="ctrl.changeInclude('posts')" ng-if = "ctrl.loggedInUser === false">Community</h5>
-        <!-- Link to community board if logged in-->
-        <h5 ng-click="ctrl.changeLoggedInInclude('postsCreate')" ng-if="ctrl.loggedInUser !== false">Community</h5>
-        <!-- Link to show my trips view -->
-        <h5 ng-click="ctrl.changeLoggedInInclude('myflights')" ng-if = "ctrl.loggedInUser !== false">My Trips</h5>
-        <!-- Link to show create trip -->
-        <h5 ng-click="ctrl.changeLoggedInInclude('createflight')" ng-if = "ctrl.loggedInUser !== false">Create Trip</h5>
-        <!-- Link to logout user -->
-        <h5 ng-click = "ctrl.logout()" ng-if = "ctrl.loggedInUser !== false">Log Out</h5>
-    </nav>
+    <div class="jumbotron text-center">
+            <h1 id="jumbo-text">FlightApp</h1>
+    </div>
+
+        <!-- Display this nav bar if user is signed in -->
+        <nav ng-if="ctrl.loggedInUser !== false">
+            <!-- Create user account -->
+            <h5 ng-click="ctrl.changeInclude('signup')" ng-if = "ctrl.loggedInUser === false">Sign Up</h5>
+            <!-- Log in users with existing accounts -->
+            <h5 ng-click="ctrl.changeInclude('login')" ng-if = "ctrl.loggedInUser === false">Log In</h5>
+            <!-- Link to community board if not logged in -->
+            <h5 ng-click="ctrl.changeInclude('communityIndex')" ng-if = "ctrl.loggedInUser === false">Community</h5>
+            <!-- Link to community board if logged in-->
+            <h5 ng-click="ctrl.changeLoggedInInclude('communityIndex')" ng-if="ctrl.loggedInUser !== false">Community</h5>
+            <!-- Link to show my trips view -->
+            <h5 ng-click="ctrl.changeLoggedInInclude('myflights')" ng-if = "ctrl.loggedInUser !== false">My Trips</h5>
+            <!-- Link to show create trip -->
+            <h5 ng-click="ctrl.changeLoggedInInclude('createflight')" ng-if = "ctrl.loggedInUser !== false">Create Trip</h5>
+            <!-- Link to logout user -->
+            <h5 ng-click = "ctrl.logout()" ng-if = "ctrl.loggedInUser !== false">Log Out</h5>
+        </nav>
+
+        <!-- Display this nav if user is not signed in -->
+        <div ng-if="ctrl.loggedInUser === false" id="nav-icons">
+            <div class="card" ng-click="ctrl.changeInclude('signup')">
+                <img src="/assets/signUpIcon.png" class="card-img-top" alt="Sign Up Icon">
+                Sign Up
+            </div>
+            <div class="card" ng-click="ctrl.changeInclude('login')">
+                <img src="/assets/logInIcon.png" class="card-img-top" alt="Log In Icon">
+                Log In
+            </div>
+            <div class="card" ng-click="ctrl.changeInclude('communityIndex')">
+                <img src="/assets/communityIcon.png" class="card-img-top" alt="Community Icon">
+                Community
+            </div>
+        </div>
 
 
     <!-- This displays only when user is not logged in     -->
@@ -45,21 +66,6 @@
         <!-- Everything inside this section will only be displayed if user is logged in -->
         <h2>Welcome {{ctrl.loggedInUser.username}}!</h2>
 
-        <!-- Search users saved flights -->
-        <label for="Search By">
-            <input type="text" placeholder = "Search My Flights" ng-model = 'searchBox'>
-        </label>
-
-        <div>
-            <label for="price-up">Return Date</label>
-            <input type="radio" name="order" value="inboundPartialDate" ng-model='order' id="returndate"/>
-            <label for="price-down">Country</label>
-            <input type="radio" name="order" value="country" ng-model='order'id="country"/>
-            <label for="product-asc">Departure Date</label>
-            <input type="radio" name="order" value="outboundPartialDate" ng-model='order' id="departuredate"/>
-        </div>
-        <!-- This is the div where we display our includes to be shown only when logged in -->
-        <div ng-include="ctrl.includeLoggedInPath"></div>
 
     </section>
 </body>

@@ -76,7 +76,8 @@ app.controller("MyController", ["$http", function($http){
                 userid: this.loggedInUser._id
             }
         }).then(function(response){
-            controller.getFlights();
+            // redirect to show flights page on submit
+            window.location.href = "/";
         }, function(error){
             console.log(error);
         })
@@ -92,16 +93,6 @@ app.controller("MyController", ["$http", function($http){
         })
     }
 
-    this.getFlights();
-
-    $http({
-        method:'GET',
-        url:'/session'
-    }).then(function(response){
-        if(response.data.username){
-            controller.loggedInUser = response.data;
-        }
-    });
 
     this.editFlight = function(flight){
         $http({
@@ -131,6 +122,16 @@ app.controller("MyController", ["$http", function($http){
         })
     }
 
+        $http({
+            method:'GET',
+            url:'/session'
+        }).then(function(response){
+            if(response.data.username){
+                controller.loggedInUser = response.data;
+            }
+        });
+
+this.getFlights();
 
 }])
 
