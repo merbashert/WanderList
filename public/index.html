@@ -21,13 +21,13 @@
         <!-- Display this nav bar if user is signed in -->
         <nav ng-if="ctrl.loggedInUser !== false">
             <!-- Create user account -->
-            <h5 ng-click="ctrl.changeInclude('signup')" ng-if = "ctrl.loggedInUser === false">Sign Up</h5>
+            <!-- <h5 ng-click="ctrl.changeInclude('signup')" ng-if = "ctrl.loggedInUser === false">Sign Up</h5> -->
             <!-- Log in users with existing accounts -->
-            <h5 ng-click="ctrl.changeInclude('login')" ng-if = "ctrl.loggedInUser === false">Log In</h5>
+            <!-- <h5 ng-click="ctrl.changeInclude('login')" ng-if = "ctrl.loggedInUser === false">Log In</h5> -->
             <!-- Link to community board if not logged in -->
-            <h5 ng-click="ctrl.changeInclude('communityIndex')" ng-if = "ctrl.loggedInUser === false">Community</h5>
+            <!-- <h5 ng-click="ctrl.changeInclude('posts')" ng-if = "ctrl.loggedInUser === false">Community</h5> -->
             <!-- Link to community board if logged in-->
-            <h5 ng-click="ctrl.changeLoggedInInclude('communityIndex')" ng-if="ctrl.loggedInUser !== false">Community</h5>
+            <h5 ng-click="ctrl.changeLoggedInInclude('postsCreate')" ng-if="ctrl.loggedInUser !== false">Community</h5>
             <!-- Link to show my trips view -->
             <h5 ng-click="ctrl.changeLoggedInInclude('myflights')" ng-if = "ctrl.loggedInUser !== false">My Trips</h5>
             <!-- Link to show create trip -->
@@ -46,7 +46,7 @@
                 <img src="/assets/logInIcon.png" class="card-img-top" alt="Log In Icon">
                 Log In
             </div>
-            <div class="card" ng-click="ctrl.changeInclude('communityIndex')">
+            <div class="card" ng-click="ctrl.changeInclude('posts')">
                 <img src="/assets/communityIcon.png" class="card-img-top" alt="Community Icon">
                 Community
             </div>
@@ -65,7 +65,7 @@
     <section ng-if = "ctrl.loggedInUser !== false">
         <!-- Everything inside this section will only be displayed if user is logged in -->
         <h2>Welcome {{ctrl.loggedInUser.username}}!</h2>
-
+<div ng-include="ctrl.includeLoggedInPath"></div>
 
     </section>
 </body>
