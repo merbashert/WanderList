@@ -53,16 +53,14 @@ app.use('/users', usersController);
 const sessionController = require('./controllers/session.js');
 app.use('/session', sessionController);
 
-const postsController = require('./controllers/post.js');
-app.use('/posts', postsController)
+const searchFlightsController = require("./controllers/searchFlights.js");
+app.use("/searchFlights", searchFlightsController)
+
 
 // app.get('/flights', (req, res) => {
 //     res.send("Hello World")
 // })
 
-app.get('/board', function(req, res){
-    res.sendFile(__dirname + "/public/posts.html")
-})
 
 app.get('/community', function(req, res){
   res.sendFile(__dirname + "/public/communityIndex.html");

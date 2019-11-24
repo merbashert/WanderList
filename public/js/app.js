@@ -60,6 +60,7 @@ app.controller("MyController", ["$http", function($http){
         })
     };
 
+
     this.createFlight = function(){
         $http({
             method:'POST',
@@ -75,7 +76,8 @@ app.controller("MyController", ["$http", function($http){
                 userid: this.loggedInUser._id
             }
         }).then(function(response){
-            controller.getFlights();
+            // redirect to show flights page on submit
+            window.location.href = "/";
         }, function(error){
             console.log(error);
         })
@@ -131,4 +133,67 @@ app.controller("MyController", ["$http", function($http){
 
 this.getFlights();
 
+}])
+
+app.controller("PostController", ["$http", function($http){
+    const controller = this;
+
+
+    this.addComment = function(post){
+        $http({
+            method: 'PUT',
+            url: '/posts/' + post._id,
+            data: {
+                comment: this.comment
+            }
+        }).then(function(response){
+            console.log("response:",response.data);
+            controller.getPosts()
+        })
+    }
+
+    this.createPost = function(){
+        $http({
+            method:'POST',
+            url: '/posts',
+            data: {
+                destination: this.destination,
+                departure: this.departure,
+                return: this.return,
+                cost: this.cost,
+                description: this.description,
+                username: this.username
+            }
+        }).then(function(response){
+            console.log(response);
+            controller.getPosts();
+        }, function(error){
+            console.log(error);
+        })
+    }
+
+
+    this.getPosts = function(){
+        $http({
+            method: 'GET',
+            url: '/posts'
+        }).then(function(response){
+            controller.posts = response.data;
+        }), function(error){
+
+        }
+    }
+
+
+    this.deletePost = function(post){
+        $http({
+            method: 'DELETE',
+            url: '/posts/' + post._id
+        }).then(function(response){
+            controller.getPosts();
+        })
+    }
+
+
+    this.getPosts();
 }])

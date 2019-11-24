@@ -1,4 +1,18 @@
 <div class="flightList">
+
+    <!-- Search users saved flights -->
+    <div id="search-my-flights">
+    <label for="Search By">
+        <input type="text" placeholder = "Search My Flights" ng-model = 'searchBox'>
+    </label>
+        <label for="price-up">Return Date</label>
+        <input type="radio" name="order" value="inboundPartialDate" ng-model='order' id="returndate"/>
+        <label for="price-down">Country</label>
+        <input type="radio" name="order" value="country" ng-model='order'id="country"/>
+        <label for="product-asc">Departure Date</label>
+        <input type="radio" name="order" value="outboundPartialDate" ng-model='order' id="departuredate"/>
+
+    <!-- Display flights user has saved     -->
     <div ng-repeat = "flight in ctrl.flights | orderBy: order | filter: searchBox" ng-if = "flight.userid === ctrl.loggedInUser._id">
         <div class="flight">
             Country: {{flight.country}}<br/>

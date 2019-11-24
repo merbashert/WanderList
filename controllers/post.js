@@ -12,17 +12,11 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/:id', (req, res) => {
-    Post.findById(req.params.id, (error, foundPost) => {
-        console.log(foundPost);
-        res.json(foundPost)
-    })
-})
 
 router.post('/', (req, res) => {
     Post.create(req.body, (error, createdPost) => {
-        console.log(req.body);
-        console.log("post route error:", error);
+        // console.log(req.body);
+        // console.log("post route error:", error);
         res.json(createdPost)
     })
 });
@@ -34,7 +28,9 @@ router.delete("/:id", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-    Post.findByIdAndUpdate(req.params.id, req.body, {new:true}, (error, updatedPost) => {
+    Post.findByIdAndUpdate(req.params.id, {$push:{"comments":req.body.comment}}, (error, updatedPost) => {
+        // console.log(updatedPost);
+        console.log(req.body);
         res.json(updatedPost)
     })
 });
