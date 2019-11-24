@@ -127,4 +127,61 @@ nav h5 {
     padding: 10px;
 }
 
+/* My Flights when logged in */
+.myFlights {
+    background-image: url('/assets/backgroundTop.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 100vw;
+    height: 100vh;
+    color: white;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#search-my-flights {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.myFlightTitle h2{
+    justify-content: center;
+    font-size: 75px;
+    color: var(--light-blue);
+    padding: 10px;
+}
+
+.myFlightsDisplay {
+    display:flex;
+    padding-top: 100px;
+}
+
+.myFlights form {
+    color: var(--dark-blue);
+}
+
+.flight button {
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+}
+
+/* Create a new flight */
+.createFlight {
+    background-image: url('/assets/backgroundTop.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 100vw;
+    height: 100vh;
+    color: white;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 /* Jumbotron image from https://www.pexels.com/photo/gray-plane-wing-62623/ */
