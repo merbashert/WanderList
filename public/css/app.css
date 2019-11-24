@@ -2,6 +2,12 @@
     margin: 0;
 }
 
+/* Setting color variables */
+:root {
+    --dark-blue: #0c215f;
+    --light-blue: #70b3ff;
+}
+
 .flightList {
     display: flex;
     justify-content: flex-start;
@@ -15,8 +21,8 @@
 
 /* Main page jumbotron */
 .jumbotron {
-    /* background-image: url('/assets/jumboImg.jpg'); */
-    background-color: #5370ff;
+    background-image: url('/assets/jumboImg.png');
+    background-color: var(--dark-blue);
     background-repeat: no-repeat;
     display: flex;
     align-items: center;
@@ -30,6 +36,7 @@
     font-size: 120px;
     text-align: center;
     margin: 0 auto;
+    margin-top: -200px;
 }
 
 /* Styling for logged in nav bar */
@@ -37,7 +44,7 @@
 nav {
     display: flex;
     justify-content: space-around;
-    background-color: #37b7ff;
+    background-color: var(--dark-blue);
     color: white;
     padding: 10px;
 }
@@ -60,7 +67,7 @@ nav h5 {
     flex-direction: column;
     flex-grow: 1;
     text-align: center;
-    color: #5370ff;
+    color: var(--dark-blue);
     font-size: 250%;
 }
 
@@ -70,4 +77,4 @@ nav h5 {
     margin: 0 auto;
 }
 
-/* Jumbotron image from https://unsplash.com/photos/iiVuXgLEm6k */
+/* Jumbotron image from https://www.pexels.com/photo/gray-plane-wing-62623/ */
