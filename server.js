@@ -53,8 +53,6 @@ app.use('/users', usersController);
 const sessionController = require('./controllers/session.js');
 app.use('/session', sessionController);
 
-// const searchFlightsController = require("./controllers/searchFlights.js");
-// app.use("/searchFlights", searchFlightsController)
 
 
 // app.get('/flights', (req, res) => {
