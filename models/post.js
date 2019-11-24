@@ -6,6 +6,7 @@ const postSchema = new mongoose.Schema({
     return: {type: String},
     cost: {type:Number},
     description: {type: String},
+    comments: [{type: String}],
     username: {type: String}
 })
 
