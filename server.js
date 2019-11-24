@@ -61,6 +61,10 @@ app.use('/posts', postsController)
 // })
 
 app.get('/board', function(req, res){
+    res.sendFile(__dirname + "/public/postsCreate.html")
+})
+
+app.get('/boardLoggedOut', function(req, res){
     res.sendFile(__dirname + "/public/posts.html")
 })
 

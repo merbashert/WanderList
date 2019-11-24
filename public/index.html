@@ -7,7 +7,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="/js/app.js" charset="utf-8"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!-- <script src="/js/posts.js" charset="utf-8"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/app.css">
 
     <title></title>
@@ -52,21 +53,18 @@
         </div>
 
 
-        <!-- This displays only when user is not logged in     -->
-        <section ng-if = "ctrl.loggedInUser === false">
+    <!-- This displays only when user is not logged in     -->
+    <section ng-if = "ctrl.loggedInUser === false">
 
-            <!-- This is the div where we display our includes -->
-            <div ng-include="ctrl.includePath"></div>
+        <!-- This is the div where we display our includes -->
+        <div ng-include="ctrl.includePath"></div>
 
-        </section>
+    </section>
 
 
-        <section ng-if = "ctrl.loggedInUser !== false">
+    <section ng-if = "ctrl.loggedInUser !== false">
         <!-- Everything inside this section will only be displayed if user is logged in -->
-            <h2>Welcome {{ctrl.loggedInUser.username}}!</h2>
-
-            <!-- This is the div where we display our includes to be shown only when logged in -->
-            <div ng-include="ctrl.includeLoggedInPath"></div>
+        <h2>Welcome {{ctrl.loggedInUser.username}}!</h2>
 
 
     </section>
