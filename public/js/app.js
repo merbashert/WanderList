@@ -91,16 +91,6 @@ app.controller("MyController", ["$http", function($http){
         })
     }
 
-    this.getFlights();
-
-    $http({
-        method:'GET',
-        url:'/session'
-    }).then(function(response){
-        if(response.data.username){
-            controller.loggedInUser = response.data;
-        }
-    });
 
     this.editFlight = function(flight){
         $http({
@@ -130,5 +120,15 @@ app.controller("MyController", ["$http", function($http){
         })
     }
 
+        $http({
+            method:'GET',
+            url:'/session'
+        }).then(function(response){
+            if(response.data.username){
+                controller.loggedInUser = response.data;
+            }
+        });
+
+this.getFlights();
 
 }])
