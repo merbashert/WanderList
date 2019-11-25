@@ -7,7 +7,7 @@ const postSchema = new mongoose.Schema({
     cost: {type:Number},
     description: {type: String},
     comments: [{type: String}],
-    username: {type: String}
+    userid: {type: String}
 })
 
 const Post = mongoose.model('Post', postSchema);

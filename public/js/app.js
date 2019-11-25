@@ -136,12 +136,16 @@ app.controller("MyController", ["$http", function($http){
 
 this.getFlights();
 
-}])
+// app.controller("PostController", ["$http", function($http){
+//     const controller = this;
 
-app.controller("PostController", ["$http", function($http){
-    const controller = this;
-
-
+    this.clearForms = () => {
+            this.destination = ""
+            this.departure = ""
+            this.return = ""
+            this.cost = ""
+            this.description = ""
+        }
     this.addComment = function(post){
         $http({
             method: 'PUT',
@@ -150,8 +154,8 @@ app.controller("PostController", ["$http", function($http){
                 comment: this.comment
             }
         }).then(function(response){
-            console.log("response:",response.data);
             controller.getPosts()
+            alert("Comment Posted!")
         })
     }
 
@@ -165,11 +169,12 @@ app.controller("PostController", ["$http", function($http){
                 return: this.return,
                 cost: this.cost,
                 description: this.description,
-                username: this.username
+                userid: controller.loggedInUser._id
             }
         }).then(function(response){
-            console.log(response);
             controller.getPosts();
+            controller.clearForms()
+                console.log(response.data);
         }, function(error){
             console.log(error);
         })
@@ -182,6 +187,7 @@ app.controller("PostController", ["$http", function($http){
             url: '/posts'
         }).then(function(response){
             controller.posts = response.data;
+
         }), function(error){
 
         }
@@ -199,7 +205,11 @@ app.controller("PostController", ["$http", function($http){
 
 
     this.getPosts();
-}]);
+// }]);
+
+}])
+
+
 
 
 app.controller("SearchFlightsController", ["$http", function($http){
