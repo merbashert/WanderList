@@ -72,13 +72,14 @@ nav h5 {
     text-align: center;
     color: var(--dark-blue);
     font-size: 250%;
-}
+} 
 
 .card img {
     display: flex;
     max-width: 30%;
     margin: 0 auto;
 }
+
 
 .card button {
     max-width: 30%;
@@ -184,4 +185,19 @@ nav h5 {
 }
 
 
+
 /* Jumbotron image from https://www.pexels.com/photo/gray-plane-wing-62623/ */
+li{
+    list-style-type: none;
+
+}
+
+#searchFlights{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 4%
+}
+/* .searchFlights, .currency{
+    display: inline-block;
+    justify-content: space-around;
+} */
