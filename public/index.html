@@ -110,7 +110,7 @@
         <!-- Welcome user upon log in -->
         <div class="welcome">
             <section ng-if = "ctrl.loggedInUser !== false">
-                <h2>Welcome {{ctrl.loggedInUser.username}}!</h2>
+                <h2>Welcome {{ctrl.loggedInUser.username.charAt(0).toUpperCase() + (ctrl.loggedInUser.username).slice(1)}}!</h2>
             </section>
         </div>
 

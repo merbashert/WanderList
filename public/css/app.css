@@ -72,7 +72,7 @@ nav h5 {
     text-align: center;
     color: var(--dark-blue);
     font-size: 250%;
-} 
+}
 
 .card img {
     display: flex;
@@ -206,9 +206,18 @@ nav h5 {
     padding: 10px;
 }
 
+.memoryTitle h4{
+    justify-content: center;
+    font-size: 40px;
+    color: var(--light-blue);
+    background-color: var(--dark-blue);
+    padding: 5px;
+    margin: 0px
+}
+
 .memories {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     flex-wrap: wrap;
     background-color: var(--dark-blue)
 }
@@ -230,20 +239,16 @@ nav h5 {
     margin-top: 4px;
 }
 
-.memory-header{
-display: flex;
-justify-content: flex-end;
-margin: 5px;
-font-size: 20px;
-color: var(--light-blue)
-}
 
 .memory-footer {
-    margin: 5px
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
 }
 
-.comment-button {
-    background-color: var(--light-blue);
+.lnr-trash {
+    font-size: 20px;
+    color: var(--light-blue)
 }
 
 #add-memory-button{
@@ -252,12 +257,38 @@ color: var(--light-blue)
     border: 2px solid var(--dark-blue);
 }
 
+
+
+.comment-button {
+    background-color: var(--light-blue);
+}
+
+#comment-modal {
+    top: 30%
+}
 #comment-header {
     background-color: var(--dark-blue);
     color: white;
 }
 
 #comment-header button {
+    color: white;
+}
+
+#post-header {
+    background-color: var(--dark-blue);
+}
+
+#post-header h4 {
+    color: white;
+}
+
+#create-post input[type='text'], #create-post input[type='number']{
+    color: black;
+}
+
+#create-post input[type='submit'], #create-post button {
+    background-color: var(--dark-blue);
     color: white;
 }
 
