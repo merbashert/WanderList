@@ -91,7 +91,7 @@ app.controller("MyController", ["$http", function($http){
             method: 'GET',
             url: '/flights'
         }).then(function(response){
-            console.log(this.loggedInUser);
+            // console.log(this.loggedInUser);
             controller.flights = response.data;
         })
     }
@@ -216,8 +216,9 @@ app.controller("SearchFlightsController", ["$http", function($http){
         },
 
     }).then(function(response){
-        console.log(response.data);
+
         controller.foundFlights = response.data
+         console.log(response.data)
     });
 }
 
@@ -231,6 +232,9 @@ app.controller("SearchFlightsController", ["$http", function($http){
           },
       }).then(function(response){
           console.log(response);
+          controller.foundCurrency = response.data
+          console.log(response.data.amount);
+          console.log(response.data.);
       });
 };
 
