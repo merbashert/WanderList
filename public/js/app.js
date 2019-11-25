@@ -141,7 +141,14 @@ this.getFlights();
 app.controller("PostController", ["$http", function($http){
     const controller = this;
 
-
+    this.clearForms = () => {
+            this.destination = ""
+            this.departure = ""
+            this.return = ""
+            this.cost = ""
+            this.description = ""
+        }
+        
     this.addComment = function(post){
         $http({
             method: 'PUT',
@@ -169,6 +176,7 @@ app.controller("PostController", ["$http", function($http){
             }
         }).then(function(response){
             controller.getPosts();
+            controller.clearForms()
         }, function(error){
             console.log(error);
         })

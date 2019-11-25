@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     Post.create(req.body, (error, createdPost) => {
-        // console.log(req.body);
+        console.log(req.body);
         // console.log("post route error:", error);
         res.json(createdPost)
     })
