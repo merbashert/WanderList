@@ -30,93 +30,168 @@
         </nav>
 
         <!-- Display this nav if user is not signed in -->
+
+        <!-- This handles sign up -->
         <div ng-if="ctrl.loggedInUser === false" id="nav-icons">
-            <div class="card" ng-click="ctrl.changeInclude('signup')">
+            <div class="card">
                 <img src="/assets/signUpIcon.png" class="card-img-top" alt="Sign Up Icon">
-                Sign Up
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">
+                    Sign Up
+                </button>
+
+                <!--Sign Up Modal -->
+                <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="signUpModalLabel">Sign Up</h5>
+
+                      </div>
+                      <div class="modal-body">
+                          <form ng-submit = ctrl.signup()>
+                              <label for="signupUsername">Username:</label>
+                              <input id="signupUsername" type="text" ng-model="ctrl.signupUsername">
+                              <label for="signupPassword">Password:</label>
+                              <input id="signupPassword" type="password" ng-model="ctrl.signupPassword">
+                              <input type="submit" value="Sign Up">
+                          </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
             </div>
-            <div class="card" ng-click="ctrl.changeInclude('login')">
+
+            <!-- This handles login in -->
+            <div class="card" >
                 <img src="/assets/logInIcon.png" class="card-img-top" alt="Log In Icon">
-                Log In
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#logInModal">
+                    Log In
+                </button>
+
+                <!-- Log In Modal -->
+                <div class="modal fade" id="logInModal" tabindex="-1" role="dialog" aria-labelledby="logInModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="logInModalLabel">Log In</h5>
+
+                      </div>
+                      <div class="modal-body">
+                          <form ng-submit = "ctrl.login()">
+                              <label for="loginUsername">Username:</label>
+                              <input id="loginUsername" type="text" ng-model="ctrl.loginUsername">
+                              <label for="loginPassword">Password:</label>
+                              <input id="loginPassword" type="password" ng-model="ctrl.loginPassword">
+                              <input type="submit" value="Log In">
+                          </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
             </div>
-            <div class="card" ng-click="ctrl.changeInclude('posts')">
+
+            <div class="card">
                 <img src="/assets/communityIcon.png" class="card-img-top" alt="Community Icon">
-                Community
+                <button type="button" class="btn btn-primary" ng-click="ctrl.changeInclude('posts')">
+                    Community
+                </button>
             </div>
         </div>
 
+        <!-- Welcome user upon log in -->
+        <div class="welcome">
+            <section ng-if = "ctrl.loggedInUser !== false">
+                <h2>Welcome {{ctrl.loggedInUser.username}}!</h2>
+            </section>
+        </div>
+
         <!-- This is our API search form -->
-        <div id="searchFlights" ng-controller = "SearchFlightsController as ctrl">
+        <div id="searchFields" ng-controller = "SearchFlightsController as ctrl">
+            <div class="searchSection">
+                <img src="/assets/searchFlightIcon.png" class="card-img-top" alt="Search Flight Icon">
+                <h1>Search Flights</h1>
 
-            <h1>Search Flights</h1>
+                <form ng-submit = "ctrl.searchFlights()">
+                    Outbound Airport<select ng-model="ctrl.userOutboundAir">
+                        <option value="LAX-sky">LAX-Los Angeles, CA</option>
+                        <option value="SFO-sky">SFO-San Francisco, CA</option>
+                        <option value="BRO-sky">BRO-Brownsville, Tx</option>
+                        <option value="BRO-sky">BRO-Brownsville, Tx</option>
+                        <option value="RBH-sky">RBH-Brooks Lodge, AK</option>
+                        <option value="BUF-sky">BUF-Buffalo, NY</option>
+                        <option value="CLE-sky">CLE-Cleveland, OH</option>
+                        <option value="COD-sky">COD-Cody/Yellowstone, WY</option>
 
-            <form ng-submit = "ctrl.searchFlights()">
-                Outbound Airport<select ng-model="ctrl.userOutboundAir">
-                    <option value="LAX-sky">LAX-Los Angeles, CA</option>
-                    <option value="SFO-sky">SFO-San Francisco, CA</option>
-                    <option value="BRO-sky">BRO-Brownsville, Tx</option>
-                    <option value="BRO-sky">BRO-Brownsville, Tx</option>
-                    <option value="RBH-sky">RBH-Brooks Lodge, AK</option>
-                    <option value="BUF-sky">BUF-Buffalo, NY</option>
-                    <option value="CLE-sky">CLE-Cleveland, OH</option>
-                    <option value="COD-sky">COD-Cody/Yellowstone, WY</option>
+                    </select> <br/>
+                    Inbound Airport<select ng-model="ctrl.userInboudAir">
+                        <option value="LAX-sky">LAX-Los Angeles, CA</option>
+                        <option value="SFO-sky">SFO-San Francisco, CA</option>
+                        <option value="BRO-sky">BRO-Brownsville, Tx</option>
+                        <option value="BRO-sky">BRO-Brownsville, Tx</option>
+                        <option value="RBH-sky">RBH-Brooks Lodge, AK</option>
+                        <option value="BUF-sky">BUF-Buffalo, NY</option>
+                    </select> <br/>
+                    Outbound Date: <input type="text" ng-model = "ctrl.userOutboundDate" placeholder="2019-12-01"><br/>
+                    Inbound Date: <input type="text" ng-model = "ctrl.userInboundDate" placeholder="2019-12-10"><br/>
+                    <input type="submit" value="search flights">
+                </form><br/>
+            </div>
 
-                </select> <br/>
-                Inbound Airport<select ng-model="ctrl.userInboudAir">
-                    <option value="LAX-sky">LAX-Los Angeles, CA</option>
-                    <option value="SFO-sky">SFO-San Francisco, CA</option>
-                    <option value="BRO-sky">BRO-Brownsville, Tx</option>
-                    <option value="BRO-sky">BRO-Brownsville, Tx</option>
-                    <option value="RBH-sky">RBH-Brooks Lodge, AK</option>
-                    <option value="BUF-sky">BUF-Buffalo, NY</option>
-                </select> <br/>
-                Outbound Date: <input type="text" ng-model = "ctrl.userOutboundDate" placeholder="2019-12-01"><br/>
-                Inbound Date: <input type="text" ng-model = "ctrl.userInboundDate" placeholder="2019-12-10"><br/>
-                <input type="submit" value="search flights">
-            </form><br/>
+            <div class="searchSection">
+                <img src="/assets/searchCurrencyIcon.png" class="card-img-top" alt="Search Money Icon">
 
-            <h1>Convert Currency</h1>
-            <form ng-submit = "ctrl.currency()">
-                To <select ng-model="ctrl.toCountry">
-                    <option value="AUD">AUD-Australian Dollar</option>
-                    <option value="CAD">CAD-Canadian dollar</option>
-                    <option value="CHF">CHF-Swiss franc</option>
-                    <option value="CNY">CNY-Chinese Yuan</option>
-                    <option value="EUR">EUR-Euro</option>
-                    <option value="GBP">GBP-British pound</option>
-                    <option value="JPY">JPY-Japanese Yen</option>
-                    <option value="MXN">MXN-Mexican peso</option>
-                    <option value="NZD">NZD-New Zealand Dollar</option>
-                    <option value="USD">USD-U.S dollar</option>
-                </select> <br/>
+                <h1>Convert Currency</h1>
 
 
-                From <select ng-model="ctrl.fromCountry">
-                    <option value="AUD">AUD-Australian Dollar</option>
-                    <option value="CAD">CAD-Canadian dollar</option>
-                    <option value="CHF">CHF-Swiss franc</option>
-                    <option value="CNY">CNY-Chinese Yuan</option>
-                    <option value="EUR">EUR-Euro</option>
-                    <option value="GBP">GBP-British pound</option>
-                    <option value="JPY">JPY-Japanese Yen</option>
-                    <option value="MXN">MXN-Mexican peso</option>
-                    <option value="NZD">NZD-New Zealand Dollar</option>
-                    <option value="USD">USD-U.S dollar</option>
+                <form ng-submit = "ctrl.currency()">
+                    To <select ng-model="ctrl.toCountry">
+                        <option value="AUD">AUD-Australian Dollar</option>
+                        <option value="CAD">CAD-Canadian dollar</option>
+                        <option value="CHF">CHF-Swiss franc</option>
+                        <option value="CNY">CNY-Chinese Yuan</option>
+                        <option value="EUR">EUR-Euro</option>
+                        <option value="GBP">GBP-British pound</option>
+                        <option value="JPY">JPY-Japanese Yen</option>
+                        <option value="MXN">MXN-Mexican peso</option>
+                        <option value="NZD">NZD-New Zealand Dollar</option>
+                        <option value="USD">USD-U.S dollar</option>
+                    </select> <br/>
 
-                 </select> <br/>
-                <input type="submit" value="convert currency">
-            </form>
+
+                    From <select ng-model="ctrl.fromCountry">
+                        <option value="AUD">AUD-Australian Dollar</option>
+                        <option value="CAD">CAD-Canadian dollar</option>
+                        <option value="CHF">CHF-Swiss franc</option>
+                        <option value="CNY">CNY-Chinese Yuan</option>
+                        <option value="EUR">EUR-Euro</option>
+                        <option value="GBP">GBP-British pound</option>
+                        <option value="JPY">JPY-Japanese Yen</option>
+                        <option value="MXN">MXN-Mexican peso</option>
+                        <option value="NZD">NZD-New Zealand Dollar</option>
+                        <option value="USD">USD-U.S dollar</option>
+
+                     </select> <br/>
+                    <input type="submit" value="convert currency">
+                </form>
+            </div>
 
                 <div ng-repeat = "searchFlight in ctrl.searchFlights">
                     <a href = "/searchFlights/{{searchFlight._id}}">
                     {{searchFlights.toCountry}}<br/></a>
-                    {{searchFlights.fromCountry}<br/>
+                    {{searchFlights.fromCountry}}<br/>
                 </div>
         </div>
 
     <!-- This displays only when user is not logged in     -->
     <section ng-if = "ctrl.loggedInUser === false">
-
 
         <!-- This is the div where we display our includes -->
         <div ng-include="ctrl.includePath"></div>
@@ -127,7 +202,7 @@
     <section ng-if = "ctrl.loggedInUser !== false">
 
         <!-- Everything inside this section will only be displayed if user is logged in -->
-        <h2>Welcome {{ctrl.loggedInUser.username}}!</h2>
+
         <div ng-include="ctrl.includeLoggedInPath"></div>
 
     </section>
