@@ -1,8 +1,8 @@
 
-<section ng-controller = "PostController as ctrl">
+<section ng-controller = "MyController as ctrl">
     <div class="memoryBoard">
         <div class="memoryTitle">
-            <h2>Memory Board</h2>
+            <h2>My Past Flights</h2>
         </div>
         <div class="memoryForm">
             <button type="button" id = "add-memory-button" data-toggle="modal" data-target="#addMemory" ng-click = "ctrl.comment=''">Add Memory</button>
@@ -24,7 +24,7 @@
                             <input type="text" ng-model = "ctrl.description" placeholder="Description">
                             <input type="hidden" ng-model = "ctrl.username" placeholder="Username"><br/>
                             <div class="modal-footer">
-                                <input type="submit" value="Save Memory">
+                                <input type="submit" value="Save Past Flight">
                             </div>
                         </form>
                     </div>
@@ -51,9 +51,7 @@
                     </div>
 
 
-                    <div class="modal fade" id="{{post.destination}}Modal" role="dialog"> <!--add ng-if -->
-                        <!-- <div class="modal fade" id="{{post.destination}}-Modal" ng-if = "ctrl.showModal == true"> <!--add ng-if change value of ctrll.showModal to id of modal-->
-
+                    <div class="modal fade" id="{{post.destination}}Modal" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header" id="comment-header">
