@@ -20,15 +20,15 @@
 }
 
 /* Main page jumbotron */
-.jumbo {
-    background-image: url('/assets/jumboImg2.png');
+.jumbotron {
+    background-image: url('/assets/jumboImg.png');
     background-color: var(--dark-blue);
     background-repeat: no-repeat;
     display: flex;
     align-items: center;
     background-size: cover;
     max-width: 100vw;
-    height: 70vh;
+    height: 55vh;
     margin-top: -10px;
 }
 
@@ -76,7 +76,7 @@ nav h5 {
 
 .card img {
     display: flex;
-    max-width: 30%;
+    max-width: 40%;
     margin: 0 auto;
 }
 
