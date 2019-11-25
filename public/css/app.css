@@ -77,4 +77,17 @@ nav h5 {
     margin: 0 auto;
 }
 
+/* Styling for memory board */
+.memories {
+    display: flex;
+    justify-content: flex-start
+}
+
+.memory {
+    margin: 20px;
+}
+
+#commentField {
+    width: 80%
+}
 /* Jumbotron image from https://www.pexels.com/photo/gray-plane-wing-62623/ */

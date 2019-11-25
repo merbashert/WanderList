@@ -147,8 +147,8 @@ app.controller("PostController", ["$http", function($http){
                 comment: this.comment
             }
         }).then(function(response){
-            console.log("response:",response.data);
             controller.getPosts()
+            alert("Comment Posted!")
         })
     }
 
@@ -165,7 +165,6 @@ app.controller("PostController", ["$http", function($http){
                 username: this.username
             }
         }).then(function(response){
-            console.log(response);
             controller.getPosts();
         }, function(error){
             console.log(error);

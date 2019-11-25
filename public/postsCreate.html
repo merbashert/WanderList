@@ -1,35 +1,53 @@
 
-    <section ng-controller = "PostController as ctrl">
+<section ng-controller = "PostController as ctrl">
 
-        <h1>New Memory</h1>
+    <h1>New Memory</h1>
 
-        <form ng-submit = "ctrl.createPost()">
-            <input type="text" ng-model = "ctrl.destination" placeholder="Destination"><br/>
-            <input type="text" ng-model = "ctrl.departure" placeholder="Departure"><br/>
-            <input type="text" ng-model = "ctrl.return" placeholder="Return"><br/>
-            <input type="number" ng-model = "ctrl.cost" placeholder="Cost"><br/>
-            <input type="text" ng-model = "ctrl.description" placeholder="Description">
-            <input type="hidden" ng-model = "ctrl.username" placeholder="Username"><br/>
-            <input type="submit" value="Save Memory">
-        </form>
-
-            <div ng-repeat = "post in ctrl.posts">
-
+    <form ng-submit = "ctrl.createPost()">
+        <input type="text" ng-model = "ctrl.destination" placeholder="Destination"><br/>
+        <input type="text" ng-model = "ctrl.departure" placeholder="Departure"><br/>
+        <input type="text" ng-model = "ctrl.return" placeholder="Return"><br/>
+        <input type="number" ng-model = "ctrl.cost" placeholder="Cost"><br/>
+        <input type="text" ng-model = "ctrl.description" placeholder="Description">
+        <input type="hidden" ng-model = "ctrl.username" placeholder="Username"><br/>
+        <input type="submit" value="Save Memory">
+    </form>
+    <div class="memories">
+        <div ng-repeat = "post in ctrl.posts">
+            <div class="memory">
                 {{post.destination}}<br/>
                 {{post.departure}}<br/>
                 {{post.return}}<br/>
-                {{post.cost}}<br/>
+                ${{post.cost}}<br/>
                 {{post.description}}<br/>
-                <div ng-repeat = "x in post.comments">
-                    {{x}}
+                <button ng-click = "ctrl.deletePost(post)">Delete post</button><br/>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#{{post.destination}}Modal" ng-click = "ctrl.comment=''">Comments</button>
+                <!-- <button type="button" class="btn btn-info btn-sm" ng-click = "ctrl.toggleModal">Comments</button> <!-- add ng click writ efunction to change value of ctrl.showModal-->
+
+                <div class="modal fade" id="{{post.destination}}Modal" role="dialog"> <!--add ng-if -->
+                <!-- <div class="modal fade" id="{{post.destination}}-Modal" ng-if = "ctrl.showModal == true"> <!--add ng-if change value of ctrll.showModal to id of modal-->
+
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 id="modalHeader" class="modal-title">Comments</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div ng-repeat = "x in post.comments track by $index">
+                                    {{x}}<hr>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <form ng-submit = "ctrl.addComment(post)">
+                                    <input type="text" ng-model = "ctrl.comment" id = "commentField">
+                                    <input type="submit" value="Add Comment" data-toggle="modal" data-target="#{{post.destination}}Modal">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <button ng-click = "ctrl.deletePost(post)">Delete post</button>
-                <form ng-submit = "ctrl.addComment(post)">
-                    <input type="text" ng-model = "ctrl.comment">
-                    <input type="submit" value="Add Comment">
-                </form>
-
-
             </div>
-
-    </section>
+        </div>
+    </div>
+</section>

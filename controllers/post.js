@@ -28,9 +28,8 @@ router.delete("/:id", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-    Post.findByIdAndUpdate(req.params.id, {$push:{"comments":req.body.comment}}, (error, updatedPost) => {
+    Post.findByIdAndUpdate(req.params.id, {$push:{"comments":req.body.comment}}, {new:true}, (error, updatedPost) => {
         // console.log(updatedPost);
-        console.log(req.body);
         res.json(updatedPost)
     })
 });
