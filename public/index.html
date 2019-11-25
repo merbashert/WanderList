@@ -47,6 +47,8 @@
 
         <!-- This is our API search form -->
         <div id="searchFlights" ng-controller = "SearchFlightsController as ctrl">
+            <div class="searchFlights">
+
 
             <h1>Search Flights</h1>
 
@@ -60,6 +62,7 @@
                     <option value="BUF-sky">BUF-Buffalo, NY</option>
                     <option value="CLE-sky">CLE-Cleveland, OH</option>
                     <option value="COD-sky">COD-Cody/Yellowstone, WY</option>
+                    <!-- <input type="text" ng-model="ctrl.userOutboundAir" placeholder="Outbound Airport"> -->
 
                 </select> <br/>
                 Inbound Airport<select ng-model="ctrl.userInboudAir">
@@ -74,6 +77,71 @@
                 Inbound Date: <input type="text" ng-model = "ctrl.userInboundDate" placeholder="2019-12-10"><br/>
                 <input type="submit" value="search flights">
             </form><br/>
+
+            <li ng-repeat="flight in ctrl.foundFlights.Carriers ">
+
+                <ul>
+                    <li>{{flight.Name}}:</li>
+
+                        <ul ng-repeat="flight in ctrl.foundFlights.Quotes">
+                            <!-- <h1 ng-if="!flight in ctrl.foundFlights.Quotes">No Quotes Available </h1> -->
+                            <br/>
+                            <li>Quote #: {{flight.QuoteId}}</li>
+                            <li ng-repeat="flight in ctrl.foundFlights.Currencies">Round Trip Cost: {{flight.Code}} {{flight.Symbol}}</li>
+                            <li>{{flight.MinPrice}}</li>
+                            <li>Direct Flight: {{flight.Direct}} </li>
+                            <li ng-repeat="flight in ctrl.foundFlights.Places | limitTo:1">Outbound Airport: {{flight.IataCode}}, {{flight.Name}}</li>
+
+                            <li>{{flight.Name}}</li>
+
+                            <li> Departure Date & Time:{{flight.OutboundLeg.DepartureDate.substring(0,10)}}</li>
+
+                            <li ng-repeat="flight in ctrl.foundFlights.Places" ng-show="!$first">Inbound Airport: {{flight.IataCode}}, {{flight.Name}}</li>
+
+                            <li> Departure Date & Time: {{flight.InboundLeg.DepartureDate.substring(0,10)}}</li>
+
+                            <li>Quoted on: {{flight.QuoteDateTime}}</li>
+                        </ul>
+                </ul>
+
+                <!-- <ul> -->
+                    <!-- <li ng-repeat="flight in ctrl.foundFlights.Places">
+                        <ul>
+                            <li>{{flight.IataCode}}, {{flight.Name}}</li>
+                        </ul>
+                    </li> -->
+                <!-- </ul> -->
+                <!-- <ul> -->
+                    <!-- <li ng-repeat="flight in ctrl.foundFlights.Quotes"> -->
+                        <!-- <ul>
+                            <li>Direct Flight: {{flight.Direct}} </li>
+                            <li>{{flight.Name}}</li>
+                            <li> Outbound Leg Departure Date & Time:{{flight.OutboundLeg.DepartureDate}}</li> -->
+
+
+
+                                <!-- <ul ng-repeat="flight in ctrl.foundFlights.Currencies">
+                                    <li>{{flight.Code}} {{flight.Symbol}}</li>
+                                </ul>
+
+
+
+                            <li>{{flight.MinPrice}}</li>
+                            <li> Inbound Leg Departure Date & Time:{{flight.InboundLeg.DepartureDate}}</li>
+                            <li>{{flight.MinPrice}}</li>
+                            <li>Quoted on: {{flight.QuoteDateTime}}</li>
+
+                        </ul> -->
+                    <!-- </li> -->
+                <!-- </ul> -->
+
+
+
+            </li>
+
+        </div>
+
+            <div class="currency">
 
             <h1>Convert Currency</h1>
             <form ng-submit = "ctrl.currency()">
@@ -106,12 +174,26 @@
                  </select> <br/>
                 <input type="submit" value="convert currency">
             </form>
+            <br/>
+            <li ng-repeat="currency in ctrl.foundCurrency">
+                <ul>
+                    <li>{{currency.base_currency_name}}:  {{currency.amount}} =</li>
+                </ul>
+            </li>
+            <li ng-repeat="currency in ctrl.foundCurrency.rates ">
 
-                <div ng-repeat = "searchFlight in ctrl.searchFlights">
-                    <a href = "/searchFlights/{{searchFlight._id}}">
-                    {{searchFlights.toCountry}}<br/></a>
-                    {{searchFlights.fromCountry}<br/>
-                </div>
+                <ul>
+                    <li>{{currency.currency_name}}: {{currency.rate}} </li>
+
+
+                </ul>
+            </li>
+
+        </div>
+
+
+            </div>
+
         </div>
 
     <!-- This displays only when user is not logged in     -->

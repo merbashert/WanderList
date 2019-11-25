@@ -77,4 +77,18 @@ nav h5 {
     margin: 0 auto;
 }
 
+li{
+    list-style-type: none;
+
+}
+
+#searchFlights{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 4%
+}
+/* .searchFlights, .currency{
+    display: inline-block;
+    justify-content: space-around;
+} */
 /* Jumbotron image from https://www.pexels.com/photo/gray-plane-wing-62623/ */
