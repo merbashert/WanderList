@@ -266,6 +266,11 @@ nav h5 {
 #comment-modal {
     top: 30%
 }
+
+#post-modal {
+    top: 30%
+}
+
 #comment-header {
     background-color: var(--dark-blue);
     color: white;
