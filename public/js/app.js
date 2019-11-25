@@ -5,7 +5,8 @@ app.controller("MyController", ["$http", function($http){
 
     this.loggedInUser = false;
     // Show my flights on logged in index page by default
-    this.includeLoggedInPath = './myflights.html'
+    this.includeLoggedInPath = './myflights.html';
+    this.includePath = './apiSearch.html'
 
 
     // This controls our includes when user is not logged in
@@ -81,6 +82,7 @@ app.controller("MyController", ["$http", function($http){
         }).then(function(response){
             // redirect to show flights page on submit
             window.location.href = "/";
+
         }, function(error){
             console.log(error);
         })
@@ -244,7 +246,7 @@ app.controller("SearchFlightsController", ["$http", function($http){
           console.log(response);
           controller.foundCurrency = response.data
           console.log(response.data.amount);
-          console.log(response.data.);
+          console.log(response.data);
       });
 };
 

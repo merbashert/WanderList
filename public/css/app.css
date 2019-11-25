@@ -72,7 +72,7 @@ nav h5 {
     text-align: center;
     color: var(--dark-blue);
     font-size: 250%;
-} 
+}
 
 .card img {
     display: flex;
@@ -182,6 +182,13 @@ nav h5 {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+
+#add-flight-button{
+    background-color: var(--light-blue);
+    padding: 10px 20px;
+    border: 2px solid var(--dark-blue);
 }
 
 /* Styling for Community Board */
