@@ -153,7 +153,8 @@ this.getFlights();
             method: 'PUT',
             url: '/posts/' + post._id,
             data: {
-                comment: this.comment
+                comment: this.comment,
+                username: controller.loggedInUser.username
             }
         }).then(function(response){
             controller.getPosts()
@@ -171,7 +172,8 @@ this.getFlights();
                 return: this.return,
                 cost: this.cost,
                 description: this.description,
-                userid: controller.loggedInUser._id
+                userid: controller.loggedInUser._id,
+                username: controller.loggedInUser.username
             }
         }).then(function(response){
             controller.getPosts();
