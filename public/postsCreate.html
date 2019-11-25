@@ -1,35 +1,80 @@
 
-    <section ng-controller = "PostController as ctrl">
+<section ng-controller = "MyController as ctrl">
+    <div class="memoryBoard">
+        <div class="memoryTitle">
+            <h2>My Past Flights</h2>
+        </div>
+        <div class="memoryForm">
+            <button type="button" id = "add-memory-button" data-toggle="modal" data-target="#addMemory" ng-click = "ctrl.comment=''">Add Memory</button>
+        </div>
 
-        <h1>New Memory</h1>
+        <div class="modal fade" id="addMemory" role="dialog">
 
-        <form ng-submit = "ctrl.createPost()">
-            <input type="text" ng-model = "ctrl.destination" placeholder="Destination"><br/>
-            <input type="text" ng-model = "ctrl.departure" placeholder="Departure"><br/>
-            <input type="text" ng-model = "ctrl.return" placeholder="Return"><br/>
-            <input type="number" ng-model = "ctrl.cost" placeholder="Cost"><br/>
-            <input type="text" ng-model = "ctrl.description" placeholder="Description">
-            <input type="hidden" ng-model = "ctrl.username" placeholder="Username"><br/>
-            <input type="submit" value="Save Memory">
-        </form>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form ng-submit = "ctrl.createPost()">
+                            <input type="text" ng-model = "ctrl.destination" placeholder="Destination"><br/>
+                            <input type="text" ng-model = "ctrl.departure" placeholder="Departure"><br/>
+                            <input type="text" ng-model = "ctrl.return" placeholder="Return"><br/>
+                            <input type="number" ng-model = "ctrl.cost" placeholder="Cost"><br/>
+                            <input type="text" ng-model = "ctrl.description" placeholder="Description">
+                            <input type="hidden" ng-model = "ctrl.username" placeholder="Username"><br/>
+                            <div class="modal-footer">
+                                <input type="submit" value="Save Past Flight">
+                            </div>
+                        </form>
+                    </div>
 
-            <div ng-repeat = "post in ctrl.posts">
-
-                {{post.destination}}<br/>
-                {{post.departure}}<br/>
-                {{post.return}}<br/>
-                {{post.cost}}<br/>
-                {{post.description}}<br/>
-                <div ng-repeat = "x in post.comments">
-                    {{x}}
                 </div>
-                <button ng-click = "ctrl.deletePost(post)">Delete post</button>
-                <form ng-submit = "ctrl.addComment(post)">
-                    <input type="text" ng-model = "ctrl.comment">
-                    <input type="submit" value="Add Comment">
-                </form>
-
-
             </div>
+        </div>
 
-    </section>
+        <div class="memories">
+            <div ng-repeat = "post in ctrl.posts">
+                <div class="memory">
+                    <div class="memory-header">
+                        <div ng-click = "ctrl.deletePost(post)"><span class="lnr lnr-trash"></span></div>
+                    </div>
+                    <div class="memory-body">
+                        <h3>{{post.destination}}<br/></h3>
+                        {{post.departure}}<br/>
+                        {{post.return}}<br/>
+                        ${{post.cost}}<br/>
+                        {{post.description}}<br/>
+                    </div>
+                    <div class="memory-footer">
+                        <button type="button" class = "comment-button" data-toggle="modal" data-target="#{{post.destination}}Modal" ng-click = "ctrl.comment=''">Comments</button>
+                    </div>
+
+
+                    <div class="modal fade" id="{{post.destination}}Modal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header" id="comment-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 id="modalHeader" class="modal-title">Comments</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div ng-repeat = "x in post.comments track by $index">
+                                        {{x}}<hr>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <form ng-submit = "ctrl.addComment(post)">
+                                        <input type="text" ng-model = "ctrl.comment" id = "commentField">
+                                        <input type="submit" value="Add Comment" data-toggle="modal" data-target="#{{post.destination}}Modal">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
