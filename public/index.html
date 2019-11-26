@@ -114,7 +114,13 @@
             <section ng-if = "ctrl.loggedInUser !== false">
                 <h2>Welcome {{ctrl.loggedInUser.username.charAt(0).toUpperCase() + (ctrl.loggedInUser.username).slice(1)}}!</h2>
             </section>
+
         </div>
+        <!-- Flight widget-->
+        <!-- Only show on create flight page -->
+
+        <div data-skyscanner-widget="FlightSearchWidget" data-locale="en-GB"></div>
+        <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>
 
     <!-- This displays only when user is not logged in     -->
     <section ng-if = "ctrl.loggedInUser === false">
