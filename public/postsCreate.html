@@ -1,0 +1,83 @@
+
+<section ng-controller = "MyController as ctrl">
+    <div class="memoryBoard">
+        <div class="memoryTitle">
+            <h2>Community Board</h2>
+        </div>
+        <div class="memoryForm">
+            <button type="button" id = "add-memory-button" data-toggle="modal" data-target="#communityPost" ng-click = "ctrl.comment=''">Post to Community</button>
+        </div>
+
+        <div class="modal fade" id="communityPost" role="dialog">
+
+            <div class="modal-dialog" id="post-modal">
+                <div class="modal-content">
+                    <div class="modal-header" id="post-header">
+                        <h4 id="modalHeader" class="modal-title">Post to Community</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form ng-submit = "ctrl.createPost()" id = "create-post">
+                            <input type="text" ng-model = "ctrl.destination" placeholder="Destination"><br/>
+                            <input type="text" ng-model = "ctrl.departure" placeholder="Departure"><br/>
+                            <input type="text" ng-model = "ctrl.return" placeholder="Return"><br/>
+                            <input type="number" ng-model = "ctrl.cost" placeholder="Cost"><br/>
+                            <input type="text" ng-model = "ctrl.description" placeholder="Description"><br/>
+                            <div class="modal-footer">
+                                <input type="submit" value="Post" data-toggle="modal" data-target="#communityPost" class = "btn btn-lg">
+                                <button data-dismiss="modal" class = "btn btn-lg">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="memories">
+            <div ng-repeat = "post in ctrl.posts">
+                <div class="memory">
+                    <div class="memory-header">
+
+                    </div>
+                    <div class="memory-body">
+                        <h6>Posted By: {{post.username.charAt(0).toUpperCase() + (post.username).slice(1)}}</h6>
+                        <h3>{{post.destination}}<br/></h3>
+                        {{post.departure}}<br/>
+                        {{post.return}}<br/>
+                        ${{post.cost}}<br/>
+                        {{post.description}}<br/>
+
+                    </div>
+                    <div class="memory-footer">
+                        <button type="button" class = "comment-button" data-toggle="modal" data-target="#{{post.destination}}Modal" ng-click = "ctrl.comment=''">Comments</button>
+                        <div ng-click = "ctrl.deletePost(post)" ng-if = "post.userid === ctrl.loggedInUser._id"><span class="lnr lnr-trash"></span></div>
+                    </div>
+
+
+                    <div class="modal fade" id="{{post.destination}}Modal" role="dialog">
+                        <div class="modal-dialog" id="comment-modal">
+                            <div class="modal-content">
+                                <div class="modal-header" id="comment-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 id="modalHeader" class="modal-title">Comments</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div ng-repeat = "x in post.comments track by $index">
+                                        {{x}}<h6>--{{post.username.charAt(0).toUpperCase() + (post.username).slice(1)}}</h6><hr>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <form ng-submit = "ctrl.addComment(post)">
+                                        <input type="text" ng-model = "ctrl.comment" id = "commentField">
+                                        <input type="submit" value="Add Comment" data-toggle="modal" data-target="#{{post.destination}}Modal">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

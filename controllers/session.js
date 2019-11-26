@@ -7,7 +7,7 @@ router.post('/', (req, res) => {
     User.findOne({username:req.body.username}, (error, foundUser) => {
         if(foundUser == null){
             res.json({
-                message: 'user not found'
+                message: 'User Not Found'
             })
         } else {
             const doesPasswordMatch = bcrypt.compareSync(req.body.password,
@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
                 res.json(foundUser)
             } else {
                 res.json({
-                    message: 'user not found'
+                    message: 'Password Incorrect'
                 })
             }
         }
@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
 })
 
 router.get('/', (req, res) => {
-    req.json(req.session.user)
+    res.json(req.session.user)
 })
 
 router.delete('/', (req, res) => {
