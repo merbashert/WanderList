@@ -212,8 +212,6 @@ this.getFlights();
 }])
 
 
-
-
 app.controller("SearchFlightsController", ["$http", function($http){
     const controller = this;
 
@@ -228,7 +226,7 @@ app.controller("SearchFlightsController", ["$http", function($http){
         },
 
     }).then(function(response){
-
+        console.log(controller.foundFlights);
         controller.foundFlights = response.data
          console.log(response.data)
     });
@@ -244,7 +242,7 @@ app.controller("SearchFlightsController", ["$http", function($http){
           },
       }).then(function(response){
           console.log(response);
-          controller.foundCurrency = response.data
+          controller.foundCurrency = response
           console.log(response.data.amount);
           console.log(response.data);
       });
