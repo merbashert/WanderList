@@ -1,0 +1,343 @@
+* {
+    margin: 0;
+}
+
+/* Setting color variables */
+:root {
+    --dark-blue: #0c215f;
+    --light-blue: #70b3ff;
+}
+
+.flightList {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.flight {
+    width: 200px;
+    margin: 10px;
+}
+
+/* Main page jumbotron */
+.jumbo {
+    background-image: url('/assets/jumboImg2.png');
+    background-color: var(--dark-blue);
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    max-width: 100vw;
+    height: 70vh;
+    margin-top: -10px;
+}
+
+#jumbo-text {
+    color: white;
+    font-size: 120px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: -100px;
+}
+
+/* Styling for logged in nav bar */
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--dark-blue);
+    color: white;
+    padding: 10px;
+    margin-top: -30px;
+}
+
+nav h5 {
+    cursor:pointer;
+    font-size: 20px;
+}
+
+/* Styling for logged out nav icons */
+
+#nav-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: -50px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: center;
+    color: var(--dark-blue);
+    font-size: 250%;
+}
+
+.card img {
+    display: flex;
+    max-width: 30%;
+    margin: 0 auto;
+}
+
+
+.card button {
+    max-width: 30%;
+    margin: 0 auto;
+}
+
+/* Styling for welcome header */
+
+.welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 25vh;
+}
+
+.welcome h2{
+    font-size: 65px;
+    color: var(--dark-blue);
+}
+
+/* Search Fields Static */
+
+#searchFields {
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid var(--dark-blue);
+    padding-top: 30px;
+}
+
+#searchFields img {
+    display: flex;
+    max-width: 30%;
+    margin: 0 auto;
+}
+
+.searchSection {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: center;
+    color: var(--dark-blue);
+}
+
+.searchSection form {
+    padding: 10px;
+}
+
+/* My Flights when logged in */
+.myFlights {
+    background-image: url('/assets/backgroundTop.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 100vw;
+    height: 100vh;
+    color: white;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#search-my-flights {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.myFlightTitle h2{
+    justify-content: center;
+    font-size: 75px;
+    color: var(--light-blue);
+    padding: 10px;
+}
+
+.myFlightsDisplay {
+    display:flex;
+    padding-top: 100px;
+}
+
+.myFlights form {
+    color: var(--dark-blue);
+}
+
+.flight button {
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+}
+
+/* Create a new flight */
+.createFlight {
+    background-image: url('/assets/backgroundTop.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 100vw;
+    height: 100vh;
+    color: white;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#add-flight-button{
+    background-color: var(--light-blue);
+    padding: 10px 20px;
+    border: 2px solid var(--dark-blue);
+}
+
+/* Styling for Community Board */
+
+.memoryBoard {
+    background-image: url('/assets/backgroundTop.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 100vw;
+    height: 100vh;
+    color: white;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.memoryTitle h2{
+    justify-content: center;
+    font-size: 75px;
+    color: var(--light-blue);
+    padding: 10px;
+}
+
+.memoryTitle h4{
+    justify-content: center;
+    font-size: 40px;
+    color: var(--light-blue);
+    background-color: var(--dark-blue);
+    padding: 5px;
+    margin: 0px
+}
+
+.memories {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    background-color: var(--dark-blue)
+}
+
+.memory {
+    margin: 20px 5px;
+    width: 240px;
+    border: 6px outset var(--light-blue);
+    color: black;
+    background-color: white;
+}
+
+.memory-body {
+    margin: 5px;
+    color: var(--dark-blue)
+}
+
+.memory-body h3 {
+    margin-top: 4px;
+}
+
+
+.memory-footer {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+.lnr-trash {
+    font-size: 20px;
+    color: var(--light-blue)
+}
+
+#add-memory-button{
+    background-color: var(--light-blue);
+    padding: 10px 20px;
+    border: 2px solid var(--dark-blue);
+}
+
+
+
+.comment-button {
+    background-color: var(--light-blue);
+}
+
+#comment-modal {
+    top: 30%
+}
+
+#post-modal {
+    top: 30%
+}
+
+#comment-header {
+    background-color: var(--dark-blue);
+    color: white;
+}
+
+#comment-header button {
+    color: white;
+}
+
+#post-header {
+    background-color: var(--dark-blue);
+}
+
+#post-header h4 {
+    color: white;
+}
+
+#create-post input[type='text'], #create-post input[type='number']{
+    color: black;
+}
+
+#create-post input[type='submit'], #create-post button {
+    background-color: var(--dark-blue);
+    color: white;
+}
+
+.memory-form input{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.memoryForm {
+    padding: 20px;
+    background-color: var(--dark-blue);
+    display: flex;
+    justify-content: center;
+}
+
+
+
+#commentField {
+    width: 80%
+}
+
+
+/* Jumbotron image from https://www.pexels.com/photo/gray-plane-wing-62623/ */
+li{
+    list-style-type: none;
+
+}
+#baseCurrency, #convertedCurrency{
+    background-color: lightgray;
+    margin-bottom: 0;
+}
+#savedFlights{
+    color: black;
+}
+
+/* #searchFlights{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 4%
+} */

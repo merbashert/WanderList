@@ -1,0 +1,49 @@
+<div class="myFlights">
+    <div id="search-my-flights">
+        <div class="myFlightTitle">
+            <h2>My Flights</h2>
+        </div>
+        <div id="searchBy">
+            <!-- Search users saved flights -->
+                <input id="searchBar" type="text" placeholder = "Search My Flights" ng-model = 'searchBox'>
+
+                <label for="price-up">Return Date</label>
+                    <input type="radio" name="order" value="inboundPartialDate" ng-model='order' id="returndate"/>
+                    <label for="price-down">Country</label>
+                    <input type="radio" name="order" value="country" ng-model='order'id="country"/>
+                    <label for="product-asc">Departure Date</label>
+                    <input type="radio" name="order" value="outboundPartialDate" ng-model='order' id="departuredate"/>
+            </div>
+    </div>
+
+    <!-- Display flights user has saved     -->
+    <div class="myFlightsDisplay">
+
+        <div ng-repeat = "flight in ctrl.flights | orderBy: order | filter: searchBox" ng-if = "flight.userid === ctrl.loggedInUser._id">
+            <div class="flight">
+                Country: {{flight.country}}<br/>
+                Currency: {{flight.currency}}<br/>
+                Locale: {{flight.locale}}<br/>
+                Origin: {{flight.originPlace}}<br/>
+                Destination: {{flight.destinationPlace}}<br/>
+                Departure Date: {{flight.outboundPartialDate | date:'medium'}}<br/>
+                Return Date: {{flight.inboundPartialDate | date: 'medium'}}<br/>
+                <button ng-click = "ctrl.deleteFlight(flight)">Delete flight</button>
+                <button ng-if = "$index !== ctrl.indexOfFormToShow" ng-click = "ctrl.indexOfFormToShow = $index;ctrl.updatedCountry = '';ctrl.updatedCurrency = '';ctrl.updatedLocale = '';ctrl.updatedOriginPlace = '';ctrl.updatedDestinationPlace = '';ctrl.updatedOutboundPartialDate = '';ctrl.updatedInboundPartialDate = ''">Edit Flight
+                </button>
+
+                <form ng-if = "$index === ctrl.indexOfFormToShow" ng-submit = "ctrl.editFlight(flight)">
+                    <input type="text" ng-model = "ctrl.updatedCountry" placeholder = "Updated Country"><br/>
+                    <input type="text" ng-model = "ctrl.updatedCurrency" placeholder = "Updated Currency"><br/>
+                    <input type="text" ng-model = "ctrl.updatedLocale" placeholder = "Updated Locale"><br/>
+                    <input type="text" ng-model = "ctrl.updatedOriginPlace" placeholder = "Updated Origin"><br/>
+                    <input type="text" ng-model = "ctrl.updatedDestinationPlace" placeholder = "Updated Destination"><br/>
+                    <input type="date" ng-model = "ctrl.updatedOutboundPartialDate" placeholder = "Updated Departure"><br/>
+                    <input type="date" ng-model = "ctrl.updatedInboundPartialDate" placeholder = "Updated Return"><br/>
+                    <input type="submit" value="Submit Edits">
+                    <button ng-click = "ctrl.indexOfFormToShow = null">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app = "flights">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="/js/app.js" charset="utf-8"></script>
+    <!-- <script src="/js/posts.js" charset="utf-8"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+
+    <title></title>
+</head>
+<body ng-controller = "MyController as ctrl">
+    <div class="jumbo">
+            <h1 id="jumbo-text">FlightApp</h1>
+    </div>
+
+        <!-- Display this nav bar if user is signed in -->
+        <nav ng-if="ctrl.loggedInUser !== false">
+            <h5 ng-click="ctrl.changeLoggedInInclude('postsCreate')" ng-if="ctrl.loggedInUser !== false">Community</h5>
+            <!-- Link to search flights and currencies -->
+            <h5 ng-click="ctrl.changeLoggedInInclude('apiSearch')" ng-if="ctrl.loggedInUser !== false">Search Flights</h5>
+            <!-- Link to show my trips view -->
+            <h5 ng-click="ctrl.changeLoggedInInclude('myflights')" ng-if = "ctrl.loggedInUser !== false">My Trips</h5>
+            <!-- Link to show create trip -->
+            <h5 ng-click="ctrl.changeLoggedInInclude('createflight')" ng-if = "ctrl.loggedInUser !== false">Create Trip</h5>
+            <!-- Link to logout user -->
+            <h5 ng-click = "ctrl.logout()" ng-if = "ctrl.loggedInUser !== false">Log Out</h5>
+        </nav>
+
+        <!-- Display this nav if user is not signed in -->
+
+        <!-- This handles sign up -->
+        <div ng-if="ctrl.loggedInUser === false" id="nav-icons">
+            <div class="card">
+                <img src="/assets/signUpIcon.png" class="card-img-top" alt="Sign Up Icon">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">
+                    Sign Up
+                </button>
+
+                <!--Sign Up Modal -->
+                <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="signUpModalLabel">Sign Up</h5>
+
+                      </div>
+                      <div class="modal-body">
+                          <form ng-submit = ctrl.signup()>
+                              <label for="signupUsername">Username:</label>
+                              <input id="signupUsername" type="text" ng-model="ctrl.signupUsername">
+                              <label for="signupPassword">Password:</label>
+                              <input id="signupPassword" type="password" ng-model="ctrl.signupPassword">
+                              <input type="submit" value="Sign Up">
+                          </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+
+            <!-- This handles login in -->
+            <div class="card" >
+                <img src="/assets/logInIcon.png" class="card-img-top" alt="Log In Icon">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#logInModal">
+                    Log In
+                </button>
+
+                <!-- Log In Modal -->
+                <div class="modal fade" id="logInModal" tabindex="-1" role="dialog" aria-labelledby="logInModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="logInModalLabel">Log In</h5>
+
+                      </div>
+                      <div class="modal-body">
+                          <form ng-submit = "ctrl.login()">
+                              <label for="loginUsername">Username:</label>
+                              <input id="loginUsername" type="text" ng-model="ctrl.loginUsername">
+                              <label for="loginPassword">Password:</label>
+                              <input id="loginPassword" type="password" ng-model="ctrl.loginPassword">
+                              <input type="submit" value="Log In">
+                          </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+
+            <div class="card">
+                <img src="/assets/communityIcon.png" class="card-img-top" alt="Community Icon">
+                <button type="button" class="btn btn-primary" ng-click="ctrl.changeInclude('posts')">
+                    Community
+                </button>
+            </div>
+        </div>
+
+        <!-- Welcome user upon log in -->
+        <div class="welcome">
+            <section ng-if = "ctrl.loggedInUser !== false">
+                <h2>Welcome {{ctrl.loggedInUser.username.charAt(0).toUpperCase() + (ctrl.loggedInUser.username).slice(1)}}!</h2>
+            </section>
+        </div>
+
+    <!-- This displays only when user is not logged in     -->
+    <section ng-if = "ctrl.loggedInUser === false">
+
+        <!-- This is the div where we display our includes
+        It is set to flight search when not logged in-->
+        <div ng-include="ctrl.includePath"></div>
+
+    </section>
+
+
+    <section ng-if = "ctrl.loggedInUser !== false">
+
+        <!-- Everything inside this section will only be displayed if user is logged in -->
+
+        <div ng-include="ctrl.includeLoggedInPath"></div>
+
+    </section>
+</body>
+</html>

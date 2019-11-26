@@ -1,0 +1,46 @@
+
+<section ng-controller = "MyController as ctrl">
+    <div class="memoryTitle">
+        <h4>Community Board</h4>
+    </div>
+    <div class="memories">
+
+        <div ng-repeat = "post in ctrl.posts">
+            <div class="memory">
+                <div class="memory-header">
+
+                </div>
+                <div class="memory-body">
+                    <h6>Posted By: {{post.username.charAt(0).toUpperCase() + (post.username).slice(1)}}</h6>
+                    <h3>{{post.destination}}<br/></h3>
+                    {{post.departure}}<br/>
+                    {{post.return}}<br/>
+                    ${{post.cost}}<br/>
+                    {{post.description}}<br/>
+
+                </div>
+                <div class="memory-footer">
+                    <button type="button" class = "comment-button" data-toggle="modal" data-target="#{{post.destination}}Modal" ng-click = "ctrl.comment=''">View Comments</button>
+                    <div ng-click = "ctrl.deletePost(post)" ng-if = "post.userid === ctrl.loggedInUser._id"><span class="lnr lnr-trash"></span></div>
+                </div>
+
+
+                <div class="modal fade" id="{{post.destination}}Modal" role="dialog">
+                    <div class="modal-dialog" id="comment-modal">
+                        <div class="modal-content">
+                            <div class="modal-header" id="comment-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 id="modalHeader" class="modal-title">Comments</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div ng-repeat = "x in post.comments track by $index">
+                                    {{x}}<h6>--{{post.username.charAt(0).toUpperCase() + (post.username).slice(1)}}</h6><hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
