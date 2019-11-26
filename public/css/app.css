@@ -136,6 +136,13 @@ nav h5:hover {
     color: white;
 }
 
+#logInButton, #signUpButton {
+    border-radius: 4px;
+}
+
+#logInButton:hover, #signUpButton:hover {
+    background-color: var(--light-blue)
+}
 /* Search APIs */
 
 
@@ -329,6 +336,11 @@ nav h5:hover {
 
 .comment-button {
     background-color: var(--light-blue);
+}
+
+.comment-button:active {
+    background-color: var(--dark-blue);
+    color:white;
 }
 
 #comment-modal {
