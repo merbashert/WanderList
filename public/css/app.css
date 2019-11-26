@@ -328,13 +328,16 @@ li{
     list-style-type: none;
 
 }
+#baseCurrency, #convertedCurrency{
+    background-color: lightgray;
+    margin-bottom: 0;
+}
+#savedFlights{
+    color: black;
+}
 
-#searchFlights{
+/* #searchFlights{
     display: flex;
     justify-content: space-around;
     margin-top: 4%
-}
-/* .searchFlights, .currency{
-    display: inline-block;
-    justify-content: space-around;
 } */
