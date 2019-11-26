@@ -15,7 +15,16 @@ const flightSchema = new mongoose.Schema({
 <<<<<<< HEAD
 =======
     userid: {type:String, required: true}
+<<<<<<< HEAD
 >>>>>>> 3aa311b7cedb0f8d7c93a39cda87370539eb71e6
+=======
+    // flight:{
+    //     airline: String,
+    //     cost: Number,
+    //     departureAirport: String,
+    //     departureDate: Number,
+    // }
+>>>>>>> 10693a42876d88f3729148025aa9c9429f27e0ff
 });
 
 const Flights = mongoose.model("Flight", flightSchema);

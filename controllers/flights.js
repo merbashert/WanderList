@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const Flights = require("../models/flights.js");
-<<<<<<< HEAD
-=======
+
 const User = require('../models/users.js')
->>>>>>> 3aa311b7cedb0f8d7c93a39cda87370539eb71e6
+
 
 router.get("/", (req, res) => {
     Flights.find({}, (error, foundFlights) => {
@@ -13,11 +12,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-<<<<<<< HEAD
-    Flights.create(req.body, (error, createdFlights) => {
-=======
     Flights.create(req.body, (error, createdFlight) => {
->>>>>>> 3aa311b7cedb0f8d7c93a39cda87370539eb71e6
         res.json(createdFlight)
     })
 });
@@ -34,8 +29,32 @@ router.put("/:id", (req, res) => {
     })
 });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 3aa311b7cedb0f8d7c93a39cda87370539eb71e6
 module.exports = router;
+
+
+// const express = require("express");
+// const router = express.Router();
+// const Flights = require("../models/flights.js");
+//
+//
+// router.put("/:id", (req, res) => {
+//     Flights.findByIdAndUpdate(req.params.id, req.body, {new:true}, (error, updatedFlights) => {
+//         res.json(updatedFlights)
+//     })
+// });
+//
+// router.put("/:id", (req, res) => {
+//     Flights.findByIdAndUpdate(
+//         {username:req.session.username},
+//         {
+//             $set: {battery:req.body}
+//         },
+//
+//         (error, foundUser) => {
+//             res.json(updatedFlights);
+//         });
+//     });
+//
+//
+//
+// module.exports = router;
