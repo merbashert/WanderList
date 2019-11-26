@@ -25,3 +25,7 @@ A full-stack web application collaboratively designed and created by Meredith Ba
 * BCrypt
 
 * Bootstrap
+
+## Credits
+
+Jumbotron image from https://www.pexels.com/photo/gray-plane-wing-62623/
