@@ -14,7 +14,7 @@
                     <input type="text" ng-model = "ctrl.destinationPlace" placeholder="Destination"><br/>
                     <input type="date" ng-model = "ctrl.outboundPartialDate" placeholder="Departure Date"><br/>
                     <input type="date" ng-model = "ctrl.inboundPartialDate" placeholder="Return Date"><br/>
-                </form>    
+                </form>
             </div>
                 <div class="memory-footer">
                     <input class="comment-button" type="submit" value="Save flight">
@@ -108,12 +108,15 @@
                         </tr>
                     </thead>
 
-    <div class="alternateSearch">
-        <!-- Flight widget-->
-        <!-- Only show on create flight page -->
+        <div class="alternateSearch">
+            <!-- Flight widget-->
+            <!-- Only show on create flight page -->
 
-        <div data-skyscanner-widget="FlightSearchWidget" data-locale="en-GB"></div>
-        <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>
-    </div>
+            <div data-skyscanner-widget="FlightSearchWidget" data-locale="en-GB"></div>
+            <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>
+        </div>
+
+
+
 
 </div>
