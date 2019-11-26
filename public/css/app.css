@@ -115,12 +115,7 @@ nav h5:hover {
     justify-content: center;
     align-items: center;
     width: 100vw;
-<<<<<<< HEAD
-    height: 25vh;
-    margin-top: 0;
-=======
     height: 15vh;
->>>>>>> e4f54dd9bef3b456ab314b440b204711d362fe1f
 }
 
 .welcome h2{
@@ -423,25 +418,8 @@ li{
     display: flex;
     justify-content: space-around;
     margin-top: 4%
-<<<<<<< HEAD
 } */
 
-<<<<<<< HEAD
-/* .api{
-    display: flex;
-    justify-content: space-around;
-    margin-top: 4%
-=======
->>>>>>> 3aa311b7cedb0f8d7c93a39cda87370539eb71e6
-} */
-
-#baseCurrency, #convertedCurrency{
-    background-color: lightgray;
-    margin-bottom: 0;
-}
-#savedFlights{
-    color: black;
-=======
 
 /* Footer section */
 
@@ -456,5 +434,5 @@ footer {
 .footer {
     color: white;
     font-family: var(--alata);
->>>>>>> e4f54dd9bef3b456ab314b440b204711d362fe1f
+
 }
