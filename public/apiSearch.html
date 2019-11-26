@@ -1,12 +1,12 @@
 
 
         <!-- This is our API search form -->
-    <div ng-controller = "SearchFlightsController as ctrl">
-        <div id="searchFields">
+    <div class="searchCards" ng-controller = "SearchFlightsController as ctrl">
+        <div class="searchFields">
             <div class="searchSection">
-                <img src="/assets/searchFlightIcon.png" class="card-img-top" alt="Search Flight Icon">
 
-                <div>
+                <div class="searchCard">
+                    <img src="/assets/searchFlightIcon.png" class="searchCardImg" alt="Search Flight Icon">
                     <h1>Search Flights</h1>
 
                     <form ng-submit = "ctrl.searchFlights()">
@@ -57,65 +57,66 @@
                         Outbound Date: <input type="text" ng-model = "ctrl.userOutboundDate" placeholder="2019-12-01"><br/>
                         Inbound Date: <input type="text" ng-model = "ctrl.userInboundDate" placeholder="2019-12-10"><br/>
                         <input type="submit" value="search flights">
-                    </form><br/>
+                    </form>
                     </div>
 
+
+
+                    <div class="searchCard">
+                     <img src="/assets/searchCurrencyIcon.png" class="searchCardImg" alt="Search Money Icon">
+
+                        <h1>Convert Currency</h1>
+                        <form ng-submit = "ctrl.currency()">
+                            To <select ng-model="ctrl.toCountry">
+                                <option value="AUD">AUD-Australian Dollar</option>
+                                <option value="CAD">CAD-Canadian dollar</option>
+                                <option value="CHF">CHF-Swiss franc</option>
+                                <option value="CNY">CNY-Chinese Yuan</option>
+                                <option value="EUR">EUR-Euro</option>
+                                <option value="GBP">GBP-British pound</option>
+                                <option value="JPY">JPY-Japanese Yen</option>
+                                <option value="MXN">MXN-Mexican peso</option>
+                                <option value="NZD">NZD-New Zealand Dollar</option>
+                                <option value="USD">USD-U.S dollar</option>
+                            </select> <br/>
+
+
+                            From <select ng-model="ctrl.fromCountry">
+                                <option value="AUD">AUD-Australian Dollar</option>
+                                <option value="CAD">CAD-Canadian dollar</option>
+                                <option value="CHF">CHF-Swiss franc</option>
+                                <option value="CNY">CNY-Chinese Yuan</option>
+                                <option value="EUR">EUR-Euro</option>
+                                <option value="GBP">GBP-British pound</option>
+                                <option value="JPY">JPY-Japanese Yen</option>
+                                <option value="MXN">MXN-Mexican peso</option>
+                                <option value="NZD">NZD-New Zealand Dollar</option>
+                                <option value="USD">USD-U.S dollar</option>
+
+                             </select> <br/>
+                            <input type="submit" value="convert currency">
+                        </form>
                 </div>
+            </div>
+        </div>
 
-                <div class="searchSection">
-                     <img src="/assets/searchCurrencyIcon.png" class="card-img-top" alt="Search Money Icon">
+<!-- Search Results             -->
+            <div>
+                    <li ng-repeat="currency in ctrl.foundCurrency">
+                        <ul>
+                            <li id="baseCurrency">{{currency.amount}} {{currency.base_currency_name}}  </li>
+                        </ul>
+                    </li>
+                    <li ng-repeat="currency in ctrl.foundCurrency.data.rates ">
 
-                <div class="currency">
-
-                <h1>Convert Currency</h1>
-                <form ng-submit = "ctrl.currency()">
-                    To <select ng-model="ctrl.toCountry">
-                        <option value="AUD">AUD-Australian Dollar</option>
-                        <option value="CAD">CAD-Canadian dollar</option>
-                        <option value="CHF">CHF-Swiss franc</option>
-                        <option value="CNY">CNY-Chinese Yuan</option>
-                        <option value="EUR">EUR-Euro</option>
-                        <option value="GBP">GBP-British pound</option>
-                        <option value="JPY">JPY-Japanese Yen</option>
-                        <option value="MXN">MXN-Mexican peso</option>
-                        <option value="NZD">NZD-New Zealand Dollar</option>
-                        <option value="USD">USD-U.S dollar</option>
-                    </select> <br/>
+                        <ul>
+                            <li id="convertedCurrency">= {{currency.rate}} {{currency.currency_name}} </li>
 
 
-                    From <select ng-model="ctrl.fromCountry">
-                        <option value="AUD">AUD-Australian Dollar</option>
-                        <option value="CAD">CAD-Canadian dollar</option>
-                        <option value="CHF">CHF-Swiss franc</option>
-                        <option value="CNY">CNY-Chinese Yuan</option>
-                        <option value="EUR">EUR-Euro</option>
-                        <option value="GBP">GBP-British pound</option>
-                        <option value="JPY">JPY-Japanese Yen</option>
-                        <option value="MXN">MXN-Mexican peso</option>
-                        <option value="NZD">NZD-New Zealand Dollar</option>
-                        <option value="USD">USD-U.S dollar</option>
-
-                     </select> <br/>
-                    <input type="submit" value="convert currency">
-                </form>
-                <br/>
+                        </ul>
+                    </li>
                 </div>
-
-                <li ng-repeat="currency in ctrl.foundCurrency">
-                    <ul>
-                        <li id="baseCurrency">{{currency.amount}} {{currency.base_currency_name}}  </li>
-                    </ul>
-                </li>
-                <li ng-repeat="currency in ctrl.foundCurrency.data.rates ">
-
-                    <ul>
-                        <li id="convertedCurrency">= {{currency.rate}} {{currency.currency_name}} </li>
-
-
-                    </ul>
-                </li>
-                </div>
-                </div>
+                <div>
                 <table ng-if="ctrl.foundFlights !== undefined" class="table table-striped">
                     <thead>
                         <tr>
@@ -136,6 +137,9 @@
 
                 <!-- for(let i = 0; i < foundflights.Quotes.length; i++) -->
                     <tbody>
+                        <div ng-if="ctrl.foundFlights !== undefined">
+                            <h5>Sorry, no flight quotes found for this day</h5>
+                        </div>
                         <tr ng-repeat="flight in ctrl.foundFlights.Carriers" ng-if="ctrl.foundFlights.Quotes[0].QuoteId">
 
                             <td >{{flight.Name}}</td>
@@ -174,6 +178,9 @@
                             </td>
                         </tr>
                         </tbody>
+
+                    </div>
+
 
                         <div ng-if="ctrl.foundFlights !== undefined">
                             <h5>Sorry, no flight quotes found for this day</h5>
