@@ -121,7 +121,23 @@ nav h5:hover {
     color: var(--dark-blue);
 }
 
+/* Styling for signup and login */
+
+#signUpModal, #logInModal {
+    font-size: 25px;
+}
+
+#signUpModalHeader, #logInModalHeader {
+    background-color: var(--dark-blue);
+    color: white;
+}
+
+#signUpModalHeader button, #logInModalHeader button {
+    color: white;
+}
+
 /* Search APIs */
+
 
 .searchCards {
             /* Placeholder */
