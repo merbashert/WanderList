@@ -11,20 +11,48 @@
 
                     <form ng-submit = "ctrl.searchFlights()">
                         Outbound Airport<select ng-model="ctrl.userOutboundAir">
-                            <option value="LAX-sky">LAX-Los Angeles, CA</option>
-                            <option value="SFO-sky">SFO-San Francisco, CA</option>
-                            <option value="BRO-sky">BRO-Brownsville, Tx</option>
-                            <option value="BUF-sky">BUF-Buffalo, NY</option>
-                            <option value="CLE-sky">CLE-Cleveland, OH</option>
-                            <option value="COD-sky">COD-Cody/Yellowstone, WY</option>
-                            <!-- <input type="text" ng-model="ctrl.userOutboundAir" placeholder="Outbound Airport"> -->
+                            <option value="BUF">BUF-Buffalo, NY</option>
+                            <option value="CLE">CLE-Cleveland, OH</option>
+                            <option value="DCA">DCA-Washington DC - National</option>
+                            <option value="JFK">JFK-New York, NY - Kennedy</option>
+                            <option value="LAX">LAX-Los Angeles, CA</option>
+                            <option value="MCO">MCO-Orlando, FL - International</option>
+                            <option value="PBI">PBI-West Palm Beach, FL</option>
+                            <option value="PDX">PDX-Portland, OR</option>
+                            <option value="PIT">PIT-Pittsburgh, PA </option>
+                            <option value="PSP">PSP-Palm Springs, CA</option>
+                            <option value="PUB">PUB-Pueblo, CO </option>
+                            <option value="SAN">SAN-San Diego, CA</option>
+                            <option value="SAT">SAT-San Antonio, TX</option>
+                            <option value="SBA">SBA-Santa Barbara, CA</option>
+                            <option value="SFO">SFO-San Francisco, CA</option>
+                            <option value="SLE">SLE-Salem, OR</option>
 
                         </select> <br/>
+                    </form>
+
+                        <form ng-submit = "ctrl.searchFlights()">
+                        Or search by IATA code<input type="text" ng-model="ctrl.userOutboundAir" placeholder="Outbound Airport"> <br/>
+
                         Inbound Airport<select ng-model="ctrl.userInboudAir">
-                            <option value="LAX-sky">LAX-Los Angeles, CA</option>
-                            <option value="SFO-sky">SFO-San Francisco, CA</option>
-                            <option value="BRO-sky">BRO-Brownsville, Tx</option>
-                            <option value="BUF-sky">BUF-Buffalo, NY</option>
+                            <option value="BUF">BUF-Buffalo, NY</option>
+                            <option value="CLE">CLE-Cleveland, OH</option>
+                            <option value="DCA">DCA-Washington DC - National</option>
+                            <option value="JFK">JFK-New York, NY - Kennedy</option>
+                            <option value="LAX">LAX-Los Angeles, CA</option>
+                            <option value="MCO">MCO-Orlando, FL - International</option>
+                            <option value="PBI">PBI-West Palm Beach, FL</option>
+                            <option value="PDX">PDX-Portland, OR</option>
+                            <option value="PIT">PIT-Pittsburgh, PA </option>
+                            <option value="PSP">PSP-Palm Springs, CA</option>
+                            <option value="PUB">PUB-Pueblo, CO </option>
+                            <option value="SAN">SAN-San Diego, CA</option>
+                            <option value="SAT">SAT-San Antonio, TX</option>
+                            <option value="SBA">SBA-Santa Barbara, CA</option>
+                            <option value="SFO">SFO-San Francisco, CA</option>
+                            <option value="SLE">SLE-Salem, OR</option>
+
+                            <!-- <input type="text" ng-model="ctrl.userInboundAir" placeholder="Inbound Airport"> -->
                         </select> <br/>
                         Outbound Date: <input type="text" ng-model = "ctrl.userOutboundDate" placeholder="2019-12-01"><br/>
                         Inbound Date: <input type="text" ng-model = "ctrl.userInboundDate" placeholder="2019-12-10"><br/>
@@ -145,8 +173,14 @@
                                 </form>
                             </td>
                         </tr>
-                        </tbody> 
+                        </tbody>
 
+                        <div ng-if="ctrl.foundFlights !== undefined">
+                            <h5>Sorry, no flight quotes found for this day</h5>
+                        </div>
+                        <!-- flight widget -->
+                        <div data-skyscanner-widget="FlightSearchWidget" data-locale="en-GB"></div>
+                        <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>
 
     </div>
 

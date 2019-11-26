@@ -138,8 +138,6 @@ app.controller("MyController", ["$http", function($http){
 
 this.getFlights();
 
-// app.controller("PostController", ["$http", function($http){
-//     const controller = this;
 
     this.clearForms = () => {
             this.destination = ""
@@ -154,11 +152,11 @@ this.getFlights();
             url: '/posts/' + post._id,
             data: {
                 comment: this.comment,
-                username: controller.loggedInUser.username
+                author: controller.loggedInUser.username
             }
         }).then(function(response){
             controller.getPosts()
-            alert("Comment Posted!")
+            alert("Comment Posted")
         })
     }
 
@@ -178,7 +176,6 @@ this.getFlights();
         }).then(function(response){
             controller.getPosts();
             controller.clearForms()
-                console.log(response.data);
         }, function(error){
             console.log(error);
         })
@@ -197,7 +194,6 @@ this.getFlights();
         }
     }
 
-
     this.deletePost = function(post){
         $http({
             method: 'DELETE',
@@ -209,7 +205,7 @@ this.getFlights();
 
 
     this.getPosts();
-// }]);
+
 
 }])
 

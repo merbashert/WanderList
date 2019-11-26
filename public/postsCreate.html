@@ -62,9 +62,11 @@
                                     <h4 id="modalHeader" class="modal-title">Comments</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <div ng-repeat = "x in post.comments track by $index">
-                                        {{x}}<h6>--{{post.username.charAt(0).toUpperCase() + (post.username).slice(1)}}</h6><hr>
+                                    <div ng-repeat = "x in post.comments">
+                                        {{x.comment}}<h6>--{{x.author.charAt(0).toUpperCase() + (x.author).slice(1)}}</h6>
+
                                     </div>
+
                                 </div>
                                 <div class="modal-footer">
                                     <form ng-submit = "ctrl.addComment(post)">

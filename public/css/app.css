@@ -288,6 +288,11 @@ nav h5 {
     color: white;
 }
 
+.comment {
+    display: flex;
+    justify-content: space-between;
+}
+
 #post-header {
     background-color: var(--dark-blue);
 }
