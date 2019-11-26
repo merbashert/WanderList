@@ -62,7 +62,7 @@
                                     <label for="signupPassword">Password:</label>
                                     <input id="signupPassword" class = "form-control-sm" type="password" ng-model="ctrl.signupPassword">
                                 </div>
-                                <input type="submit" value="Sign Up" id="signUpButton">
+                                <input type="submit" value="Sign Up">
                             </form>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                                     <label for="loginPassword">Password:</label>
                                     <input id="loginPassword" class = "form-control-sm" type="password" ng-model="ctrl.loginPassword">
                                 </div>
-                                <input type="submit" value="Log In"  id="logInButton">
+                                <input type="submit" value="Log In">
                             </form>
                         </div>
                     </div>
@@ -120,11 +120,7 @@
         </section>
 
     </div>
-    <!-- Flight widget-->
-    <!-- Only show on create flight page -->
 
-    <div data-skyscanner-widget="FlightSearchWidget" data-locale="en-GB"></div>
-    <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>
 
     <!-- This displays only when user is not logged in     -->
     <section ng-if = "ctrl.loggedInUser === false">
@@ -143,5 +139,11 @@
         <div ng-include="ctrl.includeLoggedInPath"></div>
 
     </section>
+
+    <footer>
+        <div class="footer">
+            <p>&copy; Copyright 2019 | Bashert, Ramirez, & Zbinden</p>
+        </div>
+    </footer>
 </body>
 </html>
