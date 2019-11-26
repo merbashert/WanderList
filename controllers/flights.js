@@ -29,3 +29,31 @@ router.put("/:id", (req, res) => {
 
 
 module.exports = router;
+
+
+// const express = require("express");
+// const router = express.Router();
+// const Flights = require("../models/flights.js");
+//
+//
+// router.put("/:id", (req, res) => {
+//     Flights.findByIdAndUpdate(req.params.id, req.body, {new:true}, (error, updatedFlights) => {
+//         res.json(updatedFlights)
+//     })
+// });
+//
+// router.put("/:id", (req, res) => {
+//     Flights.findByIdAndUpdate(
+//         {username:req.session.username},
+//         {
+//             $set: {battery:req.body}
+//         },
+//
+//         (error, foundUser) => {
+//             res.json(updatedFlights);
+//         });
+//     });
+//
+//
+//
+// module.exports = router;
