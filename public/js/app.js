@@ -98,13 +98,6 @@ app.controller("MyController", ["$http", function($http){
         })
     }
 
-this.saveFlight = function(){
-    $http({
-        method:"POST",
-        url: "/flights",
-    })
-}
-
 
     this.getFlights = function(){
         $http({
@@ -263,4 +256,48 @@ this.currency = function() {
       console.log(response.data);
   });
 };
-}])
+}]);
+
+
+app.controller("flightSearchController", ["$http", function($http){
+    const controller = this;
+
+    this.createFlightSearch = function(flight){
+        $http({
+            method:'POST',
+            url: '/flightSearches',
+            data: {
+                airline: this.airline,
+                quote: this.quote,
+                currency: this.currency,
+                directFlight: this.directFlight,
+                outboundAirport: this.outboundAirport,
+                outboundFlightDate: this.outboundFlightDate,
+                inboundAirport: this.inboundAirport,
+                inboundFlightDate: this.inboundFlightDate,
+                flightQuoteDate: this.flightQuoteDate,
+                userid: this.loggedInUser._id
+            }
+        }).then(function(response){
+            // redirect to show flights page on submit
+            console.log(response);
+            window.location.href = "/";
+
+        }, function(error){
+            console.log(error);
+        })
+    }
+
+
+    this.getFlightSearches = function(flight){
+        $http({
+            method: 'GET',
+            url: '/flightSearches'
+        }).then(function(response){
+            // console.log(this.loggedInUser);
+            controller.flightSearches = response.data;
+        })
+    }
+
+
+}]);
