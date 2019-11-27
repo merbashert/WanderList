@@ -22,15 +22,15 @@
 
     <!-- Display this nav bar if user is signed in -->
     <nav ng-if="ctrl.loggedInUser !== false">
-        <h5 ng-click="ctrl.changeLoggedInInclude('postsCreate')" ng-if="ctrl.loggedInUser !== false">Community</h5>
+        <h5 ng-click="ctrl.changeLoggedInInclude('postsCreate') || ctrl.hideWidget()" ng-if="ctrl.loggedInUser !== false">Community</h5>
         <!-- Link to search flights and currencies -->
-        <h5 ng-click="ctrl.changeLoggedInInclude('apiSearch')" ng-if="ctrl.loggedInUser !== false">Search Flights</h5>
+        <h5 ng-click="ctrl.changeLoggedInInclude('apiSearch') || ctrl.hideWidget()" ng-if="ctrl.loggedInUser !== false">Search Flights</h5>
         <!-- Link to show my trips view -->
-        <h5 ng-click="ctrl.changeLoggedInInclude('myflights')" ng-if = "ctrl.loggedInUser !== false">My Trips</h5>
+        <h5 ng-click="ctrl.changeLoggedInInclude('myflights') || ctrl.hideWidget()" ng-if = "ctrl.loggedInUser !== false">My Trips</h5>
         <!-- Link to show create trip -->
-        <h5 ng-click="ctrl.changeLoggedInInclude('createflight')" ng-if = "ctrl.loggedInUser !== false">Create Trip</h5>
+        <h5 ng-click="ctrl.changeLoggedInInclude('createflight') || ctrl.showWidget()" ng-if = "ctrl.loggedInUser !== false">Create Trip</h5>
         <!-- Link to logout user -->
-        <h5 ng-click = "ctrl.logout()" ng-if = "ctrl.loggedInUser !== false">Log Out</h5>
+        <h5 ng-click = "ctrl.logout() || ctrl.hideWidget()" ng-if = "ctrl.loggedInUser !== false">Log Out</h5>
     </nav>
 
     <!-- Display this nav if user is not signed in -->
@@ -138,9 +138,10 @@
 
         <div ng-include="ctrl.includeLoggedInPath"></div>
 
-    </section> <div class="showWidgetButton">
-        <button ng-click = "showCreate = !showCreate"type="button" name="button">Developer: Show Widget</button>
-    </div>
+    </section>
+    <div ng-show="ctrl.toggleCreate == true">
+        <button ng-click = "showCreate = !showCreate" type="button" name="button">Developer: Show Widget</button>
+
         <div ng-show = "showCreate">
             <script type="text/javascript">
             </script>
@@ -148,7 +149,7 @@
                 <div data-skyscanner-widget="FlightSearchWidget" data-locale="en-GB"></div>
                 <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>
         </div>
-
+    </div>
     <footer>
         <div class="footer">
             <p>&copy; Copyright 2019 | Bashert, Ramirez, & Zbinden</p>

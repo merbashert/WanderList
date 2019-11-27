@@ -42,6 +42,15 @@
                     </thead>
     </table>
 
-
+    <div class="showWidgetButton">
+        <button ng-click = "showCreate = !showCreate" type="button" name="button">Developer: Show Widget</button>
+    </div>
+        <div ng-show = "showCreate">
+            <script type="text/javascript">
+            </script>
+                <!-- Flight widget-->
+                <div data-skyscanner-widget="FlightSearchWidget" data-locale="en-GB"></div>
+                <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>
+        </div>
 
 </div>
