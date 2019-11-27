@@ -139,7 +139,7 @@
                         </tr>
                     </thead>
 
-        
+
                     <tbody>
                         <div ng-if="ctrl.foundFlights.Quotes.length === 0">
                             <h5>Sorry, no flight quotes found for this day</h5>
@@ -159,6 +159,8 @@
                             <td ng-repeat="flight in ctrl.foundFlights.Quotes |limitTo:1">{{flight.QuoteDateTime}}</td>
                             <td>
                                 <form ng-submit="ctrl.createFlightSearch(flight)">
+                                    <input type="text" ng-model = "ctrl.airline" placeholder="airline"><br/>
+
                                     <input type="submit" value="Add"/>
                                 </form>
                             </td>
@@ -176,7 +178,7 @@
                             <td ng-repeat="flight in ctrl.foundFlights.Quotes |limitTo:1">{{flight.InboundLeg.DepartureDate.substring(0,10)}}</td>
                             <td ng-repeat="flight in ctrl.foundFlights.Quotes |limitTo:1">{{flight.QuoteDateTime}}</td>
                             <td>
-                                <form ng-submit="ctrl.createFlightSearch(flight)" >
+                                <form ng-submit="ctrl.getFlightSearches(flight)" >
 
                                     <input type="submit" value="Add"/>
                                 </form>

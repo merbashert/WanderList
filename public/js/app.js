@@ -281,6 +281,7 @@ app.controller("flightSearchController", ["$http", function($http){
         }).then(function(response){
             // redirect to show flights page on submit
             console.log(response);
+            console.log("testing");
             window.location.href = "/";
 
         }, function(error){
@@ -294,8 +295,11 @@ app.controller("flightSearchController", ["$http", function($http){
             method: 'GET',
             url: '/flightSearches'
         }).then(function(response){
-            // console.log(this.loggedInUser);
+            console.log("testing");
+            console.log(response);
             controller.flightSearches = response.data;
+        }, function(error){
+            console.log(error);
         })
     }
 
