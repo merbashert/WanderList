@@ -5,16 +5,17 @@
         </div>
         <div id="searchBy">
             <!-- Search users saved flights -->
-                <input id="searchBar" type="text" placeholder = "Search My Flights" ng-model = 'searchBox'>
+            <input id="searchBar" type="text" placeholder = "Search My Flights" ng-model = 'searchBox'>
 
-                <label for="price-up">Return Date</label>
-                    <input type="radio" name="order" value="inboundPartialDate" ng-model='order' id="returndate"/>
-                    <label for="price-down">Country</label>
-                    <input type="radio" name="order" value="country" ng-model='order'id="country"/>
-                    <label for="product-asc">Departure Date</label>
-                    <input type="radio" name="order" value="outboundPartialDate" ng-model='order' id="departuredate"/>
-            </div>
+            <label for="price-up">Return Date</label>
+            <input type="radio" name="order" value="inboundPartialDate" ng-model='order' id="returndate"/>
+            <label for="product-asc">Departure Date</label>
+            <input type="radio" name="order" value="outboundPartialDate" ng-model='order' id="departuredate"/>
+            <label for="price-down">Country</label>
+            <input type="radio" name="order" value="country" ng-model='order'id="country"/>
+
         </div>
+    </div>
     <div class="memories">
 
         <!-- Display flights user has saved     -->
