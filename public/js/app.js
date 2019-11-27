@@ -81,6 +81,7 @@ app.controller("MyController", ["$http", function($http){
             }
         }).then(function(response){
             // redirect to show flights page on submit
+            console.log(response);
             window.location.href = "/";
 
         }, function(error){

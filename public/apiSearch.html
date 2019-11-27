@@ -100,7 +100,7 @@
             </div>
         </div>
 
-<!-- Search Results             -->
+<!-- Search Results-->
             <div>
                     <li ng-repeat="currency in ctrl.foundCurrency">
                         <ul>
@@ -140,54 +140,66 @@
                         <div ng-if="ctrl.foundFlights !== undefined">
                             <h5>Sorry, no flight quotes found for this day</h5>
                         </div>
-                        <tr ng-repeat="flight in ctrl.foundFlights.Carriers" ng-if="ctrl.foundFlights.Quotes[0].QuoteId">
+                        <!-- <form ng-submit = "ctrl.createFlight()"> -->
+
+                        <tr ng-model="ctrl.foundFlights.Carriers" ng-repeat="flight in ctrl.foundFlights.Carriers" ng-if="ctrl.foundFlights.Quotes[0].QuoteId">
 
                             <td >{{flight.Name}}</td>
 
-                            <td ng-repeat="flight in ctrl.foundFlights.Quotes | limitTo:1">Quote #: {{flight.QuoteId}}</td>
-                            <td ng-repeat="flight in ctrl.foundFlights.Currencies">{{flight.Code}} {{flight.Symbol}}</td>
-                            <td ng-repeat="flight in ctrl.foundFlights.Quotes | limitTo:1">{{flight.MinPrice}}</td>
-                            <td ng-repeat="flight in ctrl.foundFlights.Quotes | limitTo:1">{{flight.Direct}}</td>
-                            <td ng-repeat="flight in ctrl.foundFlights.Places | limitTo:1"> {{flight.IataCode}}, {{flight.Name}}</td>
-                            <td ng-repeat="flight in ctrl.foundFlights.Quotes |limitTo:1">{{flight.OutboundLeg.DepartureDate.substring(0,10)}}</td>
-                            <td ng-repeat="flight in ctrl.foundFlights.Places" ng-show="!$first">{{flight.IataCode}}, {{flight.Name}}</td>
-                            <td ng-repeat="flight in ctrl.foundFlights.Quotes |limitTo:1">{{flight.InboundLeg.DepartureDate.substring(0,10)}}</td>
-                            <td ng-repeat="flight in ctrl.foundFlights.Quotes |limitTo:1">{{flight.QuoteDateTime}}</td>
+                            <td ng-model="ctrl.foundFlights.Quotes" ng-repeat="flight in ctrl.foundFlights.Quotes | limitTo:1">Quote #: {{flight.QuoteId}}</td>
+
+                            <td ng-model="ctrl.foundFlights.Currencies" ng-repeat="flight in ctrl.foundFlights.Currencies">{{flight.Code}} {{flight.Symbol}}</td>
+
+                            <td ng-model="ctrl.foundFlights.Quotes" ng-repeat="flight in ctrl.foundFlights.Quotes | limitTo:1">{{flight.MinPrice}}</td>
+
+                            <td ng-model="ctrl.foundFlights.Quotes" ng-repeat="flight in ctrl.foundFlights.Quotes | limitTo:1">{{flight.Direct}}</td>
+
+                            <td ng-model="ctrl.foundFlights.Places" ng-repeat="flight in ctrl.foundFlights.Places | limitTo:1"> {{flight.IataCode}}, {{flight.Name}}</td>
+
+                            <td ng-model="ctrl.foundFlights.Quotes" ng-repeat="flight in ctrl.foundFlights.Quotes |limitTo:1">{{flight.OutboundLeg.DepartureDate.substring(0,10)}}</td>
+
+                            <td ng-model="ctrl.foundFlights.Places" ng-repeat="flight in ctrl.foundFlights.Places" ng-show="!$first">{{flight.IataCode}}, {{flight.Name}}</td>
+                            <td ng-model="ctrl.foundFlights.Quotes" ng-repeat="flight in ctrl.foundFlights.Quotes |limitTo:1">{{flight.InboundLeg.DepartureDate.substring(0,10)}}</td>
+                            <td ng-model="ctrl.foundFlights.Quotes" ng-repeat="flight in ctrl.foundFlights.Quotes |limitTo:1">{{flight.QuoteDateTime}}</td>
                             <td>
-                                <form class="" action="index.html" method="post">
+                                <form action="/flights" method="POST">
                                     <input type="submit" value="Add"/>
                                 </form>
+                                <!-- <input type="submit" value="Add"/> -->
+
                             </td>
                         </tr>
-                        <tr ng-repeat="flight in ctrl.foundFlights.Carriers" ng-if="ctrl.foundFlights.Quotes[1].QuoteId">
+                        <!-- </form> -->
+                        <!-- <form ng-submit = "ctrl.createFlight()"> -->
+                        <tr ng-model="ctrl.foundFlights.Carriers" ng-repeat="flight in ctrl.foundFlights.Carriers" ng-if="ctrl.foundFlights.Quotes[1].QuoteId">
                             <td>{{flight.Name}}</td>
 
                             <td>Quote #: {{ctrl.foundFlights.Quotes[1].QuoteId}}</td>
-                            <td ng-repeat="flight in ctrl.foundFlights.Currencies">{{flight.Code}} {{flight.Symbol}}</td>
-                            <td ng-repeat="flight in ctrl.foundFlights.Quotes" ng-show="!$first">{{flight.MinPrice}}</td>
-                            <td ng-repeat="flight in ctrl.foundFlights.Quotes" ng-show="!$first">{{flight.Direct}}</td>
-                            <td ng-repeat="flight in ctrl.foundFlights.Places" ng-show="!$first"> {{flight.IataCode}}, {{flight.Name}}</td>
-                            <td ng-repeat="flight in ctrl.foundFlights.Quotes | limitTo:1">{{flight.OutboundLeg.DepartureDate.substring(0,10)}}</td>
-                            <td ng-repeat="flight in ctrl.foundFlights.Places" ng-show="!$first">{{flight.IataCode}}, {{flight.Name}}</td>
-                            <td ng-repeat="flight in ctrl.foundFlights.Quotes |limitTo:1">{{flight.InboundLeg.DepartureDate.substring(0,10)}}</td>
-                            <td ng-repeat="flight in ctrl.foundFlights.Quotes |limitTo:1">{{flight.QuoteDateTime}}</td>
+                            <td ng-model="ctrl.foundFlights.Currencies" ng-repeat="flight in ctrl.foundFlights.Currencies">{{flight.Code}} {{flight.Symbol}}</td>
+
+                            <td ng-model="ctrl.foundFlights.Quotes" ng-repeat="flight in ctrl.foundFlights.Quotes" ng-show="!$first">{{flight.MinPrice}}</td>
+
+                            <td ng-model="ctrl.foundFlights.Quotes" ng-repeat="flight in ctrl.foundFlights.Quotes" ng-show="!$first">{{flight.Direct}}</td>
+
+                            <td ng-model="ctrl.foundFlights.Places" ng-repeat="flight in ctrl.foundFlights.Places" ng-show="!$first"> {{flight.IataCode}}, {{flight.Name}}</td>
+
+                            <td ng-model="ctrl.foundFlights.Quotes" ng-repeat="flight in ctrl.foundFlights.Quotes | limitTo:1">{{flight.OutboundLeg.DepartureDate.substring(0,10)}}</td>
+
+                            <td ng-model="ctrl.foundFlights.Places" ng-repeat="flight in ctrl.foundFlights.Places" ng-show="!$first">{{flight.IataCode}}, {{flight.Name}}</td>
+
+                            <td ng-model="ctrl.foundFlights.Quotes" ng-repeat="flight in ctrl.foundFlights.Quotes |limitTo:1">{{flight.InboundLeg.DepartureDate.substring(0,10)}}</td>
+
+                            <td ng-model="ctrl.foundFlights.Quotes" ng-repeat="flight in ctrl.foundFlights.Quotes |limitTo:1">{{flight.QuoteDateTime}}</td>
                             <td>
-                                <form class="" action="index.html" method="post">
-                                    <input type="submit" value="Add"/>
-                                </form>
+
+                                <!-- <input type="submit" value="Add"/> -->
+
                             </td>
                         </tr>
+                        <!-- </form> -->
                         </tbody>
 
                     </div>
-
-
-                        <div ng-if="ctrl.foundFlights !== undefined">
-                            <h5>Sorry, no flight quotes found for this day</h5>
-                        </div>
-                        <!-- flight widget -->
-                        <div data-skyscanner-widget="FlightSearchWidget" data-locale="en-GB"></div>
-                        <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>
 
     </div>
 
