@@ -56,6 +56,9 @@ app.use('/session', sessionController);
 const postController = require('./controllers/post.js');
 app.use('/posts', postController);
 
+const flightSearchController = require('./controllers/flightSearch.js')
+app.use('/flightSearches', flightSearchController)
+
 
 // app.get('/flights', (req, res) => {
 //     res.send("Hello World")
