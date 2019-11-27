@@ -12,6 +12,8 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
     Flights.create(req.body, (error, createdFlight) => {
         res.json(createdFlight)
+        console.log(req.body);
+        console.log(createdFlight);
     })
 });
 

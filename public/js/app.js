@@ -89,6 +89,14 @@ app.controller("MyController", ["$http", function($http){
         })
     }
 
+this.saveFlight = function(){
+    $http({
+        method:"POST",
+        url: "/flights",
+    })
+}
+
+
     this.getFlights = function(){
         $http({
             method: 'GET',
