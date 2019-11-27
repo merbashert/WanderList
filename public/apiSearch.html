@@ -137,7 +137,7 @@
 
                 <!-- for(let i = 0; i < foundflights.Quotes.length; i++) -->
                     <tbody>
-                        <div ng-if="ctrl.foundFlights !== undefined">
+                        <div ng-if="ctrl.foundFlights.Quotes.length === 0">
                             <h5>Sorry, no flight quotes found for this day</h5>
                         </div>
                         <tr ng-repeat="flight in ctrl.foundFlights.Carriers" ng-if="ctrl.foundFlights.Quotes[0].QuoteId">
@@ -154,7 +154,7 @@
                             <td ng-repeat="flight in ctrl.foundFlights.Quotes |limitTo:1">{{flight.InboundLeg.DepartureDate.substring(0,10)}}</td>
                             <td ng-repeat="flight in ctrl.foundFlights.Quotes |limitTo:1">{{flight.QuoteDateTime}}</td>
                             <td>
-                                <form class="" action="index.html" method="post">
+                                <form ng-submit="ctrl.createFlight(flight)">
                                     <input type="submit" value="Add"/>
                                 </form>
                             </td>
@@ -172,7 +172,8 @@
                             <td ng-repeat="flight in ctrl.foundFlights.Quotes |limitTo:1">{{flight.InboundLeg.DepartureDate.substring(0,10)}}</td>
                             <td ng-repeat="flight in ctrl.foundFlights.Quotes |limitTo:1">{{flight.QuoteDateTime}}</td>
                             <td>
-                                <form class="" action="index.html" method="post">
+                                <form ng-submit="ctrl.createFlight(flight)" >
+
                                     <input type="submit" value="Add"/>
                                 </form>
                             </td>
@@ -182,12 +183,12 @@
                     </div>
 
 
-                        <div ng-if="ctrl.foundFlights !== undefined">
+                        <!-- <div ng-if="ctrl.foundFlights !== undefined">
                             <h5>Sorry, no flight quotes found for this day</h5>
                         </div>
-                        <!-- flight widget -->
+                        flight widget
                         <div data-skyscanner-widget="FlightSearchWidget" data-locale="en-GB"></div>
-                        <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>
+                        <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script> -->
 
     </div>
 
