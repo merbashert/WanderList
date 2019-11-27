@@ -159,7 +159,7 @@
                             <td ng-repeat="flight in ctrl.foundFlights.Quotes |limitTo:1">{{flight.QuoteDateTime}}</td>
                             <td>
                                 <form ng-submit="ctrl.createFlightSearch(flight)">
-                                    <input type="text" ng-model = "ctrl.airline" placeholder="airline"><br/>
+                                    <!-- <input type="text" ng-model = "ctrl.airline" placeholder="airline"><br/> -->
 
                                     <input type="submit" value="Add"/>
                                 </form>
