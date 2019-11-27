@@ -90,12 +90,21 @@ app.controller("MyController", ["$http", function($http){
             }
         }).then(function(response){
             // redirect to show flights page on submit
+            console.log(response);
             window.location.href = "/";
 
         }, function(error){
             console.log(error);
         })
     }
+
+this.saveFlight = function(){
+    $http({
+        method:"POST",
+        url: "/flights",
+    })
+}
+
 
     this.getFlights = function(){
         $http({

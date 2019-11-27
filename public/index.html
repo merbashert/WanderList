@@ -138,17 +138,18 @@
 
         <div ng-include="ctrl.includeLoggedInPath"></div>
 
-    </section>
-
-    <div ng-if = "ctrl.showCreate === true">
-            <!-- Flight widget-->
-            <!-- Only show on create flight page -->
-
-            <div data-skyscanner-widget="FlightSearchWidget" data-locale="en-GB"></div>
-            <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>
+    </sec <div class="showWidgetButton">
+        <button ng-click = "showCreate = !showCreate"type="button" name="button">Developer: Show Widget</button>
     </div>
+        <div ng-show = "showCreate">
+            <script type="text/javascript">
+            </script>
+                <!-- Flight widget-->
+                <h1>Testing</h1>
+                <div data-skyscanner-widget="FlightSearchWidget" data-locale="en-GB"></div>
+                <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>
+        </div>
 
-    <footer>
         <div class="footer">
             <p>&copy; Copyright 2019 | Bashert, Ramirez, & Zbinden</p>
         </div>
