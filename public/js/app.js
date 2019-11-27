@@ -6,7 +6,9 @@ app.controller("MyController", ["$http", function($http){
     this.loggedInUser = false;
     // Show my flights on logged in index page by default
     this.includeLoggedInPath = './myflights.html';
-    this.includePath = './apiSearch.html'
+    this.includePath = './apiSearch.html';
+
+    this.showCreate = false;
 
 
     // This controls our includes when user is not logged in
@@ -18,6 +20,12 @@ app.controller("MyController", ["$http", function($http){
     this.changeLoggedInInclude = (path) => {
         this.includeLoggedInPath = './' + path + '.html'
     }
+
+    // This controls showing the widget only when we are on the create Flight route
+    this.changeCreate = function(){
+        this.showCreate = true;
+        console.log(this.showCreate);
+    };
 
     this.signup = function(){
         $http({
@@ -61,6 +69,7 @@ app.controller("MyController", ["$http", function($http){
             method:'DELETE'
         }).then(function(){
             controller.loggedInUser = false;
+            console.log(controller.showCreate);
         })
     };
 

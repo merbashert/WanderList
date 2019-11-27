@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const Flights = require("../models/flights.js");
+
 const User = require('../models/users.js')
+
 
 router.get("/", (req, res) => {
     Flights.find({}, (error, foundFlights) => {
@@ -28,7 +30,6 @@ router.put("/:id", (req, res) => {
         res.json(updatedFlight)
     })
 });
-
 
 module.exports = router;
 
