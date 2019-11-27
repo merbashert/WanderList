@@ -8,7 +8,7 @@ app.controller("MyController", ["$http", function($http){
     this.includeLoggedInPath = './myflights.html';
     this.includePath = './apiSearch.html';
 
-    this.showCreate = false;
+    this.toggleCreate = false;
 
 
     // This controls our includes when user is not logged in
@@ -22,10 +22,15 @@ app.controller("MyController", ["$http", function($http){
     }
 
     // This controls showing the widget only when we are on the create Flight route
-    this.changeCreate = function(){
-        this.showCreate = true;
-        console.log(this.showCreate);
+    this.showWidget = function(){
+        this.toggleCreate = true;
+        console.log(this.toggleCreate);
     };
+
+    this.hideWidget = function(){
+        this.toggleCreate = false;
+        console.log(this.toggleCreate);
+    }
 
     this.signup = function(){
         $http({
