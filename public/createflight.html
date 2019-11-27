@@ -1,19 +1,27 @@
 
-<div class="myFlights">
+<div class="memoryBoard">
     <div class="myFlightTitle">
-            <h2>Create A Flight</h2>
+            <h2>Create Flight</h2>
+    </div>
+    <div class="memories">
+        <div class="memory">
+            <div class="memory-body">
+                <form ng-submit = "ctrl.createFlight()">
+                    <input type="text" ng-model = "ctrl.country" placeholder="Country"><br/>
+                    <input type="text" ng-model = "ctrl.currency" placeholder="Currency"><br/>
+                    <input type="text" ng-model = "ctrl.locale" placeholder="Locale"><br/>
+                    <input type="text" ng-model = "ctrl.originPlace" placeholder="Origin"><br/>
+                    <input type="text" ng-model = "ctrl.destinationPlace" placeholder="Destination"><br/>
+                    <input type="date" ng-model = "ctrl.outboundPartialDate" placeholder="Departure Date"><br/>
+                    <input type="date" ng-model = "ctrl.inboundPartialDate" placeholder="Return Date"><br/>
+                    <input class="comment-button" type="submit" value="Save flight">
+                </form>
+            </div>
+
+
+        </div>
     </div>
 
-    <form ng-submit = "ctrl.createFlight()">
-        <input type="text" ng-model = "ctrl.country" placeholder="Country"><br/>
-        <input type="text" ng-model = "ctrl.currency" placeholder="Currency"><br/>
-        <input type="text" ng-model = "ctrl.locale" placeholder="Locale"><br/>
-        <input type="text" ng-model = "ctrl.originPlace" placeholder="Origin"><br/>
-        <input type="text" ng-model = "ctrl.destinationPlace" placeholder="Destination"><br/>
-        <input type="date" ng-model = "ctrl.outboundPartialDate" placeholder="Departure Date"><br/>
-        <input type="date" ng-model = "ctrl.inboundPartialDate" placeholder="Return Date"><br/>
-        <input type="submit" value="Save flight">
-    </form>
 
     <table class="table table-striped">
                     <thead>
@@ -32,5 +40,8 @@
 
                         </tr>
                     </thead>
+    </table>
+
+
 
 </div>

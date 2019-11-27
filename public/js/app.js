@@ -6,7 +6,9 @@ app.controller("MyController", ["$http", function($http){
     this.loggedInUser = false;
     // Show my flights on logged in index page by default
     this.includeLoggedInPath = './myflights.html';
-    this.includePath = './apiSearch.html'
+    this.includePath = './apiSearch.html';
+
+    this.showCreate = false;
 
 
     // This controls our includes when user is not logged in
@@ -18,6 +20,12 @@ app.controller("MyController", ["$http", function($http){
     this.changeLoggedInInclude = (path) => {
         this.includeLoggedInPath = './' + path + '.html'
     }
+
+    // This controls showing the widget only when we are on the create Flight route
+    this.changeCreate = function(){
+        this.showCreate = true;
+        console.log(this.showCreate);
+    };
 
     this.signup = function(){
         $http({
@@ -61,6 +69,7 @@ app.controller("MyController", ["$http", function($http){
             method:'DELETE'
         }).then(function(){
             controller.loggedInUser = false;
+            console.log(controller.showCreate);
         })
     };
 
@@ -210,8 +219,6 @@ this.getFlights();
 }])
 
 
-
-
 app.controller("SearchFlightsController", ["$http", function($http){
     const controller = this;
 
@@ -226,26 +233,25 @@ app.controller("SearchFlightsController", ["$http", function($http){
         },
 
     }).then(function(response){
-
+        console.log(controller.foundFlights);
         controller.foundFlights = response.data
          console.log(response.data)
     });
 }
 
-    this.currency = function() {
-      $http({
-          method: 'GET',
-          url: "https://currency-converter5.p.rapidapi.com/currency/historical/2018-02-09?format=json&to="+this.toCountry+"&from="+this.fromCountry+"&amount=1",
-          headers: {
-              'x-rapidapi-host': 'currency-converter5.p.rapidapi.com',
-              'x-rapidapi-key': '9fa6b2d0ccmsh9b3a7a2f6ec8326p199982jsn4ed4b0a8a532'
-          },
-      }).then(function(response){
-          console.log(response);
-          controller.foundCurrency = response.data
-          console.log(response.data.amount);
-          console.log(response.data);
-      });
+this.currency = function() {
+  $http({
+      method: 'GET',
+      url: "https://currency-converter5.p.rapidapi.com/currency/historical/2018-02-09?format=json&to="+this.toCountry+"&from="+this.fromCountry+"&amount=1",
+      headers: {
+          'x-rapidapi-host': 'currency-converter5.p.rapidapi.com',
+          'x-rapidapi-key': '9fa6b2d0ccmsh9b3a7a2f6ec8326p199982jsn4ed4b0a8a532'
+      },
+  }).then(function(response){
+      console.log(response);
+      controller.foundCurrency = response;
+      console.log(response.data.amount);
+      console.log(response.data);
+  });
 };
-
 }])
