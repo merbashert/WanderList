@@ -8,7 +8,7 @@ app.controller("MyController", ["$http", function($http){
     this.includeLoggedInPath = './myflights.html';
     this.includePath = './apiSearch.html';
 
-    this.showCreate = false;
+    this.toggleCreate = false;
 
 
     // This controls our includes when user is not logged in
@@ -22,10 +22,15 @@ app.controller("MyController", ["$http", function($http){
     }
 
     // This controls showing the widget only when we are on the create Flight route
-    this.changeCreate = function(){
-        this.showCreate = true;
-        console.log(this.showCreate);
+    this.showWidget = function(){
+        this.toggleCreate = true;
+        console.log(this.toggleCreate);
     };
+
+    this.hideWidget = function(){
+        this.toggleCreate = false;
+        console.log(this.toggleCreate);
+    }
 
     this.signup = function(){
         $http({
@@ -90,12 +95,14 @@ app.controller("MyController", ["$http", function($http){
             }
         }).then(function(response){
             // redirect to show flights page on submit
+            console.log(response);
             window.location.href = "/";
 
         }, function(error){
             console.log(error);
         })
     }
+
 
     this.getFlights = function(){
         $http({
@@ -254,4 +261,52 @@ this.currency = function() {
       console.log(response.data);
   });
 };
-}])
+}]);
+
+
+app.controller("flightSearchController", ["$http", function($http){
+    const controller = this;
+
+    this.createFlightSearch = function(flight){
+        $http({
+            method:'POST',
+            url: '/flightSearches',
+            data: {
+                airline: this.airline,
+                quote: this.quote,
+                currency: this.currency,
+                directFlight: this.directFlight,
+                outboundAirport: this.outboundAirport,
+                outboundFlightDate: this.outboundFlightDate,
+                inboundAirport: this.inboundAirport,
+                inboundFlightDate: this.inboundFlightDate,
+                flightQuoteDate: this.flightQuoteDate,
+                userid: this.loggedInUser._id
+            }
+        }).then(function(response){
+            // redirect to show flights page on submit
+            console.log(response);
+            console.log("testing");
+            window.location.href = "/";
+
+        }, function(error){
+            console.log(error);
+        })
+    }
+
+
+    this.getFlightSearches = function(flight){
+        $http({
+            method: 'GET',
+            url: '/flightSearches'
+        }).then(function(response){
+            console.log("testing");
+            console.log(response);
+            controller.flightSearches = response.data;
+        }, function(error){
+            console.log(error);
+        })
+    }
+
+
+}]);
