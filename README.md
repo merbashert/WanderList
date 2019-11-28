@@ -1,4 +1,4 @@
-# legendary-giggle
+# WanderList
 
 A full-stack web application collaboratively designed and created by Meredith Bashert, Veronica Ramirez, and Kristina Zbinden. API integration allows users to search flight fares, convert currencies, and view community board. User authorization with encrypted login allows ability to saved flights list, ability to post to community board, and ability to comment on other users' community board posts.
 
